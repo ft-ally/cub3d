@@ -36,7 +36,7 @@ $(NAME): $(OBJ)
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(dir $@)
 	@echo "$(PURPLE)Compiling $<..$(RESET)"
-	@$(CC) $(FLAGS) $(HEADER) -c $< -o $@
+	@$(CC) $(FLAGS) $(INC) -c $< -o $@
 
 clean:
 	@$(RM) -rf $(OBJ_DIR)
@@ -53,4 +53,4 @@ fclean: clean
 re: fclean all
 	@echo "$(PINK)Object + exec files have been cleaned and rebuilt.$(RESET)"
 
-.PHONY: all re clean fclean
+.PHONY: all re clean fclean submodules

@@ -1,0 +1,16 @@
+
+
+Allowed functions:
+open
+close
+read
+write
+printf
+malloc
+free,
+perror
+strerror
+exit,
+gettimeofday
+All functions of the math library
+All functions of the MinilibX library.
