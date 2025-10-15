@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/15 12:23:58 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/15 14:44:24 by aalombro         ###   ########.fr       */
+/*   Created: 2025/10/15 13:29:47 by aalombro          #+#    #+#             */
+/*   Updated: 2025/10/15 17:22:59 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include <stdio.h>
 
-int	main(int argc, char *argv[])
+typedef struct s_assets
 {
-	t_map	map;
-	t_game	game;
+	char	*north;
+	char	*south;
+	char	*west;
+	char	*east;
+} t_assets;
 
-	if (check_valid_input(argc, argv[1]) != SUCCESS)
-		return (ERROR);
-	ft_bzero(&game, sizeof(game));
-	if (parse_map(&game, &map, argv[1]) != SUCCESS)
-		return (ERROR);
-	printf("Make works!");
-	printf("hi");
-	return (SUCCESS);
-}
+typedef struct s_map
+{
+	
+} t_map;
+
+typedef struct s_game
+{
+	char		direction;
+	int			dir_x;
+	int			dir_y;
+	t_assets	*assets;
+	t_map		*map;
+} t_game;
+
+
+

@@ -1,4 +1,4 @@
-NAME = cub3d
+NAME = cub3D
 
 PURPLE = \033[1;35m
 CYAN = \033[1;36m
@@ -7,7 +7,7 @@ PINK = \033[1;95m
 RESET = \033[0m
 
 CC = cc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 
 INC = -I $(LIBFT) -I $(MLX) -I $(CUB3D_HEADERS)
 LIBFT = inc/libft
@@ -16,7 +16,7 @@ CUB3D_HEADERS = inc/cub3d_headers
 OBJ_DIR = obj/
 SRC_DIR = src/
 
-SRC_FILES = main.c
+SRC_FILES = main.c parse_map.c utils_error.c check_input.c
 
 
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))

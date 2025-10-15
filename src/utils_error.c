@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/15 12:23:58 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/15 14:44:24 by aalombro         ###   ########.fr       */
+/*   Created: 2025/10/15 13:35:38 by aalombro          #+#    #+#             */
+/*   Updated: 2025/10/15 13:58:20 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include <stdio.h>
 
-int	main(int argc, char *argv[])
+int	print_error(char *str)
 {
-	t_map	map;
-	t_game	game;
-
-	if (check_valid_input(argc, argv[1]) != SUCCESS)
-		return (ERROR);
-	ft_bzero(&game, sizeof(game));
-	if (parse_map(&game, &map, argv[1]) != SUCCESS)
-		return (ERROR);
-	printf("Make works!");
-	printf("hi");
-	return (SUCCESS);
+	ft_putstr_fd("Error!\n", 2);
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd("\n", 2);
+	return (ERROR);
 }

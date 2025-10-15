@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/15 12:23:58 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/15 14:44:24 by aalombro         ###   ########.fr       */
+/*   Created: 2025/10/15 14:21:51 by aalombro          #+#    #+#             */
+/*   Updated: 2025/10/15 17:25:38 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include <stdio.h>
 
-int	main(int argc, char *argv[])
+static int check_extension(char *map_name)
 {
-	t_map	map;
-	t_game	game;
+	int	len;
 
-	if (check_valid_input(argc, argv[1]) != SUCCESS)
+	len = ft_strlen(map_name);
+	if (!ft_strcmp(&map_name[len - 4], ".cub"))
+		return(print_error("Wrong extension!"));
+	else
+		return (SUCCESS);
+}
+
+int	check_valid_input(int argc, char *map_name)
+{
+	if (argc < 2)
+		return (print_error("Choose map"));
+	if (argc >2)
+		return (print_error("Too many arguments, only enter map name!"));
+	if (check_extension(map_name) != SUCCESS)
 		return (ERROR);
-	ft_bzero(&game, sizeof(game));
-	if (parse_map(&game, &map, argv[1]) != SUCCESS)
-		return (ERROR);
-	printf("Make works!");
-	printf("hi");
 	return (SUCCESS);
 }
