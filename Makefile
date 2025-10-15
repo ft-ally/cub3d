@@ -31,7 +31,7 @@ SRC_DIR = src/
 SRC_FILES = main.c\
 			parse_map.c\
 			utils_error.c\
-			check_input.c\
+			init_program.c\
 			game_init.c
 
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))

@@ -3,27 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:23:58 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/15 19:25:09 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2025/10/15 19:26:46 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <stdio.h>
 
+
 int	main(int argc, char *argv[])
 {
 	t_map	map;
 	t_game	game;
 
-	if (check_valid_input(argc, argv[1]) != SUCCESS)
-		return (ERROR);
-	ft_bzero(&game, sizeof(game));
-	if (parse_map(&game, &map, argv[1]) != SUCCESS)
+	if (init_program(&map, &game, argc, argv) != SUCCESS)
 		return (ERROR);
 	if (game_init(&game) != SUCCESS)
 		return (ERROR);
+	printf("asset path north: %s\n", game.assets->north);
+	printf("asset path south: %s\n", game.assets->south);
+	printf("asset path east: %s\n", game.assets->east);
+	printf("asset path west: %s\n", game.assets->west);
 	return (SUCCESS);
 }

@@ -1,2 +1,13 @@
 
+
+15 oct
+-Created big struct
+-Got NO SO WE EA texture path
+
 to do
+//Protect ft strdup mallocs game assets are initially malloc'd ->free it 
+//Save the FC RGB in struct
+//Error check the FC RGB
+//Check for the spaces and walls
+//Check for walkable path (flood fill)
+//Save map only to the struct

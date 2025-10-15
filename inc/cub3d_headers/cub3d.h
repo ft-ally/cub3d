@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:24:29 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/15 19:13:04 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2025/10/15 19:26:53 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef CUB3D_H
 # define CUB3D_H
@@ -24,11 +25,14 @@
 # define HEIGHT 1080
 
 
-/*=========|check_input.c|========*/
-int	check_valid_input(int argc, char *map_name);
+/*=========|init_program.c|========*/
+int	init_program(t_map *map, t_game *game, int argc, char **argv);
 
-/*=========|parse_map.c|========*/
-int	parse_map(t_game *game, t_map *map, char *file);
+/*=========|get_texture.c|========*/
+int	get_texture(t_game *game, int fd);
+
+/*=========|parse_file.c|========*/
+int	parse_file(t_game *game, t_map *map, char *file);
 
 /*=========|utils_error.c|========*/
 int	print_error(char *str);
