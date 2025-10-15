@@ -5,6 +5,7 @@
 -Got NO SO WE EA texture path
 
 to do
+Double check the path, it takes everything until '\0' -> what if there's a space and more string?? 
 //Protect ft strdup mallocs game assets are initially malloc'd ->free it 
 //Save the FC RGB in struct
 //Error check the FC RGB
