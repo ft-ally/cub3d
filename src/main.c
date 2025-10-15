@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:23:58 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/15 12:47:05 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/15 13:26:19 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <stdio.h>
 
-int main()
+int main(int argc, char argv[])
 {
+
 	printf("Make works!");
 	
 }
