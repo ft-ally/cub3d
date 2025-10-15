@@ -9,7 +9,7 @@ RESET = \033[0m
 CC = cc
 FLAGS = -Wall -Wextra -Werror
 
-INC = -I $(LIBFT) $(MLX) $(CUB3D_HEADERS)
+INC = -I $(LIBFT) -I $(MLX) -I $(CUB3D_HEADERS)
 LIBFT = inc/libft
 MLX = inc/mlx_linux
 CUB3D_HEADERS = inc/cub3d_headers

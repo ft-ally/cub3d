@@ -6,14 +6,14 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:24:29 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/15 12:34:04 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/15 12:46:31 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-#include "../libft/libft.h"
-
+#include "libft.h"
+#include "mlx.h"
 
 # endif

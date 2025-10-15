@@ -6,14 +6,15 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:23:58 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/15 12:32:59 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/15 12:47:05 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d_headers/cub3d.h"
-
+#include "cub3d.h"
 #include <stdio.h>
+
 int main()
 {
 	printf("Make works!");
+	
 }
