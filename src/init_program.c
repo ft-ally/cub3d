@@ -34,22 +34,22 @@ static int	check_valid_input(int argc, char *map_name)
 		return (ERROR);
 	return (SUCCESS);
 }
-//MALLOC WARNING!!!
-static int	init_structs(t_map *map, t_game *game)
+static int	init_structs(t_game *game)
 {
 	ft_bzero(&game, sizeof(game));
-	game->assets = malloc(sizeof(t_assets));
-	if (!game->assets)
-		return (print_error("Initial asset allocation failed"));
+	game->textures = malloc(sizeof(t_textures));
+	if (!game->textures)
+		return (print_error("Initial texture allocation failed"));
+	return (SUCCESS);
 }
 /// @brief checks the input, initializes struct, parses input file, copies map to 2d array 
-int	init_program(t_map *map, t_game *game, int argc, char **argv)
+int	init_program(t_game *game, int argc, char **argv)
 {
 	if (check_valid_input(argc, argv[1]) != SUCCESS)
 		return (ERROR);
-	if (init_structs(&game, &map) != SUCCESS)
+	if (init_structs(game) != SUCCESS)
 		return (ERROR);
-	if (parse_input_file(&game, &map, argv[1]) != SUCCESS)
+	if (parse_file(game, argv[1]) != SUCCESS)
 		return (ERROR);
 	return (SUCCESS);
 }

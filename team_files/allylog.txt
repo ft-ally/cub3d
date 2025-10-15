@@ -3,6 +3,11 @@
 15 oct
 -Created big struct
 -Got NO SO WE EA texture path
++Added validate_path->trims the path (path is only chars before white space, is that correct?) 
+					->checks perm/existence of file (open)
++Added getrgb->array that assigns into r g and b.
++Added validate_rgb->checks if rgbstring is numeric and not ","
++Added free functions: free_array, free_all, free_textures
 
 to do
 Double check the path, it takes everything until '\0' -> what if there's a space and more string?? 

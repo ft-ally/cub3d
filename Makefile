@@ -29,10 +29,12 @@ OBJ_DIR = obj/
 SRC_DIR = src/
 
 SRC_FILES = main.c\
-			parse_map.c\
+			parse_file.c\
 			utils_error.c\
 			init_program.c\
-			game_init.c
+			game_init.c \
+			free.c \
+			get_identifier.c \
 
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ = $(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))

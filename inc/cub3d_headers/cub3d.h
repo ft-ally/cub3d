@@ -24,15 +24,19 @@
 # define WIDTH 1920
 # define HEIGHT 1080
 
+/*=========|free.c|========*/
+void free_textures(t_game *g);
+void free_array(char **array);
+void free_all(t_game *game);
 
 /*=========|init_program.c|========*/
-int	init_program(t_map *map, t_game *game, int argc, char **argv);
+int	init_program(t_game *game, int argc, char **argv);
 
-/*=========|get_texture.c|========*/
-int	get_texture(t_game *game, int fd);
+/*=========|get_identifier.c|========*/
+int	get_identifier(t_game *game, int fd);
 
 /*=========|parse_file.c|========*/
-int	parse_file(t_game *game, t_map *map, char *file);
+int	parse_file(t_game *game, char *file);
 
 /*=========|utils_error.c|========*/
 int	print_error(char *str);

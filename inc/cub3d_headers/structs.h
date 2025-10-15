@@ -37,16 +37,17 @@ typedef struct s_colors
 	int	b;
 } t_colors;
 
-typedef struct s_assets
+typedef struct s_textures
 {
 	char	*north;
 	char	*south;
 	char	*west;
 	char	*east;
-} t_assets;
+} t_textures;
 
 typedef struct s_map
 {
+	char	**map_grid;
 	
 } t_map;
 
@@ -57,7 +58,7 @@ typedef struct s_game
 	int			dir_y;
 	t_colors	ceiling;
 	t_colors	floor;
-	t_assets	*assets;
+	t_textures	*textures;
 	t_map		*map;
 	t_mlx		vis;
 } t_game;

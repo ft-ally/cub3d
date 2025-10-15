@@ -16,16 +16,16 @@
 
 int	main(int argc, char *argv[])
 {
-	t_map	map;
 	t_game	game;
 
-	if (init_program(&map, &game, argc, argv) != SUCCESS)
-		return (ERROR);
-	if (game_init(&game) != SUCCESS)
-		return (ERROR);
-	printf("asset path north: %s\n", game.assets->north);
-	printf("asset path south: %s\n", game.assets->south);
-	printf("asset path east: %s\n", game.assets->east);
-	printf("asset path west: %s\n", game.assets->west);
+	if (init_program(&game, argc, argv) != SUCCESS)
+		return (free_all(&game), ERROR);
+	// if (game_init(&game) != SUCCESS)
+	// 	return (ERROR);
+	printf("texture path north: %s\n", game.textures->north);
+	printf("texture path south: %s\n", game.textures->south);
+	printf("texture path east: %s\n", game.textures->east);
+	printf("texture path west: %s\n", game.textures->west);
+	free_all(&game);
 	return (SUCCESS);
 }
