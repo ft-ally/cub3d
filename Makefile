@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/10/15 17:31:52 by tcakir-y          #+#    #+#              #
+#    Updated: 2025/10/15 17:31:52 by tcakir-y         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = cub3D
 
 PURPLE = \033[1;35m
@@ -16,8 +28,11 @@ CUB3D_HEADERS = inc/cub3d_headers
 OBJ_DIR = obj/
 SRC_DIR = src/
 
-SRC_FILES = main.c parse_map.c utils_error.c check_input.c
-
+SRC_FILES = main.c\
+			parse_map.c\
+			utils_error.c\
+			check_input.c\
+			game_init.c
 
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ = $(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))

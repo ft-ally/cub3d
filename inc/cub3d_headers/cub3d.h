@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:24:29 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/15 17:20:03 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/15 19:13:04 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,13 @@
 #include "structs.h"
 #include "libft.h"
 #include "mlx.h"
+#include "mlx_init.h"
 
-#define SUCCESS 0
-#define ERROR 1
+# define SUCCESS 0
+# define ERROR 1
+# define WIDTH 1920
+# define HEIGHT 1080
+
 
 /*=========|check_input.c|========*/
 int	check_valid_input(int argc, char *map_name);

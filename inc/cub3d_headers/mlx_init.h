@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mlx_init.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/15 12:23:58 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/15 19:25:09 by tcakir-y         ###   ########.fr       */
+/*   Created: 2025/10/15 17:12:39 by tcakir-y          #+#    #+#             */
+/*   Updated: 2025/10/15 17:34:33 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include <stdio.h>
+#ifndef MLX_INIT_H
+# define MLX_INIT_H
 
-int	main(int argc, char *argv[])
-{
-	t_map	map;
-	t_game	game;
+int	game_init(t_game *game);
 
-	if (check_valid_input(argc, argv[1]) != SUCCESS)
-		return (ERROR);
-	ft_bzero(&game, sizeof(game));
-	if (parse_map(&game, &map, argv[1]) != SUCCESS)
-		return (ERROR);
-	if (game_init(&game) != SUCCESS)
-		return (ERROR);
-	return (SUCCESS);
-}
+#endif
