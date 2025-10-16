@@ -9,6 +9,10 @@
 +Added validate_rgb->checks if rgbstring is numeric and not ","
 +Added free functions: free_array, free_all, free_textures
 
+16okt
+-Error protected rgb string (against invalid char, <0 && >255)
+-Added random textures for path
+-
 to do
 Double check the path, it takes everything until '\0' -> what if there's a space and more string?? 
 //Protect ft strdup mallocs game assets are initially malloc'd ->free it 

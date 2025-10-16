@@ -6,12 +6,13 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:23:58 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/16 13:26:04 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/16 14:13:35 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <stdio.h>
+
 
 
 int	main(int argc, char *argv[])
@@ -22,10 +23,7 @@ int	main(int argc, char *argv[])
 		return (free_all(&game), ERROR);
 	// if (game_init(&game) != SUCCESS)
 	// 	return (ERROR);
-	printf("texture path north: %s\n", game.textures->north);
-	printf("texture path south: %s\n", game.textures->south);
-	printf("texture path east: %s\n", game.textures->east);
-	printf("texture path west: %s\n", game.textures->west);
+	print_extracted_data(&game);
 	free_all(&game);
 	return (SUCCESS);
 }

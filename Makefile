@@ -35,6 +35,8 @@ SRC_FILES = main.c\
 			game_init.c \
 			free.c \
 			get_identifier.c \
+			tests.c\
+			get_rgb.c\
 
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ = $(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))

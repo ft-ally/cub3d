@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:24:29 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/15 19:26:53 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/16 14:33:57 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,26 @@ void free_textures(t_game *g);
 void free_array(char **array);
 void free_all(t_game *game);
 
-/*=========|init_program.c|========*/
+/*========|init_program.c|=======*/
 int	init_program(t_game *game, int argc, char **argv);
 
-/*=========|get_identifier.c|========*/
+/*=======|get_identifier.c|======*/
 int	get_identifier(t_game *game, int fd);
+
+/*========|get_rgb.c|=========*/
+int get_rgb(t_game *game, char *rgb_string, char *id);
+
 
 /*=========|parse_file.c|========*/
 int	parse_file(t_game *game, char *file);
 
 /*=========|utils_error.c|========*/
 int	print_error(char *str);
+
+/* ====utils.c====*/
+long	ft_atol(char *str);
+
+/*============|tests.c|===========*/
+void	print_extracted_data(t_game *game);
 
 # endif

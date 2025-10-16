@@ -6,20 +6,20 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:21:51 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/16 13:37:25 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/16 14:55:20 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <stdio.h>
 
-static int check_extension(char *map_name)
+static int	check_extension(char *map_name)
 {
 	int	len;
 
 	len = ft_strlen(map_name);
 	if (ft_strcmp(&map_name[len - 4], ".cub"))
-		return(print_error("Wrong extension!"));
+		return (print_error("Wrong extension!"));
 	else
 		return (SUCCESS);
 }
@@ -34,6 +34,7 @@ static int	check_valid_input(int argc, char *map_name)
 		return (ERROR);
 	return (SUCCESS);
 }
+
 static int	init_structs(t_game *game)
 {
 	game->textures = malloc(sizeof(t_textures));
@@ -41,7 +42,9 @@ static int	init_structs(t_game *game)
 		return (print_error("Initial texture allocation failed"));
 	return (SUCCESS);
 }
-/// @brief checks the input, initializes struct, parses input file, copies map to 2d array 
+
+/// @brief checks the input, initializes struct, parses input file,
+/// copies map to 2d array 
 int	init_program(t_game *game, int argc, char **argv)
 {
 	ft_bzero(game, sizeof(t_game));
