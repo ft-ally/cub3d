@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:21:51 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/16 14:55:20 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/16 17:32:19 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ static int	init_structs(t_game *game)
 	game->textures = malloc(sizeof(t_textures));
 	if (!game->textures)
 		return (print_error("Initial texture allocation failed"));
+	game->map = malloc(sizeof(t_map));
+	if (!game->map)
+		return (print_error("Map allocation failed"));
+	ft_bzero(game->map, sizeof(t_map));
 	return (SUCCESS);
 }
 
@@ -48,6 +52,7 @@ static int	init_structs(t_game *game)
 int	init_program(t_game *game, int argc, char **argv)
 {
 	ft_bzero(game, sizeof(t_game));
+	
 	if (check_valid_input(argc, argv[1]) != SUCCESS)
 		return (ERROR);
 	if (init_structs(game) != SUCCESS)

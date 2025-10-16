@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 15:07:02 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/16 15:43:35 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/16 17:39:11 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,34 +42,88 @@ int	check_lines_after_rgb(int fd)
 	}
 }
 
-int	copy_map_to_array(t_map *map, int fd)
+/// @brief Count the map rows and cols for map ->reaches EOF
+int	count_rows_map(t_map *map, int fd)
 {
-	// char	*line;
-	// size_t	longest_line;
-
-	(void)map;
-	// longest_line = 0;
+	char	*line;
+	int		len;
 	
-	// while (1)
-	// {
-	// 	line = get_next_line(fd);
-	// 	if (ft_strlen(line) > longest_line)
-	// 		longest_line = ft_strlen(line);
-	// }
-	return(SUCCESS);
+	if (check_lines_after_rgb(fd) == ERROR)
+		return (ERROR);
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		map->height++;
+		len = ft_strlen(line);
+		if (len > map->width)
+			map->width = len;
+		free(line);
+	}
+	if (map->height == 0)
+		return (print_error("No map found"));
+	return (SUCCESS);
 }
 
+int	skip_to_map(int fd)
+{
+	char	*line;
+	int		i;
+	int		c;
 
-/// @brief This will copy the map into a 2d array, validate the map for walls
+	i = 0;
+	c = 0;
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			return (print_error("Get next line error"));
+		i = 0;
+		while (line[i])
+		{
+			if (i == 0 && line[i] == 'C')
+			{
+				c = 1;
+				break ;
+			}
+			if (c == 1)
+			{
+				if (line[i] == ' ' || line[i] == '\t')
+				{
+					i++;
+					continue ;
+				}
+				if (line[i] == '1' || line[i] == '0')
+					return(free(line), SUCCESS);
+			}
+			i++;
+		}
+		free(line);
+	}
+	return (SUCCESS);
+}
+
+/// @brief 
+///Copy the map into a 2d array, 
+///validate the map for walls
 ///validate walkable path,
 ///don't forget to call free array if map is not valid
 int	get_map(t_game *game, int fd)
 {
-	if (check_lines_after_rgb(fd) == ERROR)
+	(void)game;
+	if (skip_to_map(fd) == ERROR)
 		return (ERROR);
-	if (copy_map_to_array(game->map, fd) == ERROR)
-		return (ERROR);
-	// validate_walls();
-	// validate_walkable_path();
 	return (SUCCESS);
 }
+
+	// validate_walls();
+	// validate_walkable_path();
+	//So rught now, go to the EOF on this fd.
+	//Count how many get next line calls (rows)
+	//Count how many chars -> longest one is the max column
+	//Close file
+	//Open the file again
+	//malloc the 2d array with rows and columns
+	//Skip until line[i] == '1' or 0
+	//Then copy?

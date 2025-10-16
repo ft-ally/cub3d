@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:24:29 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/16 15:07:41 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/16 17:18:02 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,26 +30,28 @@ void free_array(char **array);
 void free_all(t_game *game);
 
 /*========|init_program.c|=======*/
-int	init_program(t_game *game, int argc, char **argv);
+int		init_program(t_game *game, int argc, char **argv);
 
 /*=======|get_identifier.c|======*/
-int	get_identifier(t_game *game, int fd);
+int		get_identifier(t_game *game, int fd);
 
 /*========|get_rgb.c|=========*/
-int get_rgb(t_game *game, char *rgb_string, char *id);
+int		get_rgb(t_game *game, char *rgb_string, char *id);
 
 
 /*=========|parse_file.c|========*/
-int	parse_file(t_game *game, char *file);
+int		parse_file(t_game *game, char *file);
 
 /*=========|utils_error.c|========*/
-int	print_error(char *str);
+int		print_error(char *str);
 
 /* ====utils.c====*/
 long	ft_atol(char *str);
 
 /*======get_map.c=====*/
-int	get_map(t_game *game, int fd);
+int		get_map(t_game *game, int fd);
+int		count_rows_map(t_map *map, int fd);
+
 
 /*============|tests.c|===========*/
 void	print_extracted_data(t_game *game);
