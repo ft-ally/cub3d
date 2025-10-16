@@ -40,7 +40,6 @@ SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ = $(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))
 
 all: submodules $(NAME)
-
 submodules:
 	@git submodule update --init --recursive
 

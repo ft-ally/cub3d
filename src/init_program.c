@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:21:51 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/15 19:25:09 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/16 13:37:25 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int check_extension(char *map_name)
 static int	check_valid_input(int argc, char *map_name)
 {
 	if (argc < 2)
-		return (print_error("Choose map"));
+		return (print_error("Choose a map"));
 	if (argc > 2)
 		return (print_error("Too many arguments, only enter map name!"));
 	if (check_extension(map_name) != SUCCESS)
@@ -36,7 +36,6 @@ static int	check_valid_input(int argc, char *map_name)
 }
 static int	init_structs(t_game *game)
 {
-	ft_bzero(&game, sizeof(game));
 	game->textures = malloc(sizeof(t_textures));
 	if (!game->textures)
 		return (print_error("Initial texture allocation failed"));
@@ -45,6 +44,7 @@ static int	init_structs(t_game *game)
 /// @brief checks the input, initializes struct, parses input file, copies map to 2d array 
 int	init_program(t_game *game, int argc, char **argv)
 {
+	ft_bzero(game, sizeof(t_game));
 	if (check_valid_input(argc, argv[1]) != SUCCESS)
 		return (ERROR);
 	if (init_structs(game) != SUCCESS)

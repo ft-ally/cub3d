@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_program.c                                     :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:21:51 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/15 19:25:09 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/16 13:34:49 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void free_array(char **array)
 }
 void free_textures(t_game *g)
 {
-	if (!g->textures)
+	if (!g || !g->textures)
 		return ;
 	if (g->textures->north)
 		free(g->textures->north);
@@ -43,5 +43,7 @@ void free_textures(t_game *g)
 
 void free_all(t_game *game)
 {
+	
 	free_textures(game);
+	
 }

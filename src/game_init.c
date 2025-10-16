@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:15:25 by tcakir-y          #+#    #+#             */
-/*   Updated: 2025/10/15 19:24:06 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2025/10/16 13:29:20 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 int	game_init(t_game *game)
 {
-	t_img_data	img;
+	// t_img_data	img;
 
 	game->vis.mlx = malloc(sizeof(t_mlx));
 	if (!game->vis.mlx)

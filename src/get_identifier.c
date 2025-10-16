@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_texture.c                                      :+:      :+:    :+:   */
+/*   get_identifier.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 19:06:26 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/15 19:18:47 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/16 13:25:12 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@ int	validate_rgb_string(char *str)
 	i = 0;
 	while(str[i])
 	{
-		if (!isdigit(str[i]) && str[i] != ",")
+		if (!isdigit(str[i]) && ft_strcmp(&str[i], ",") == 0)
 			return(print_error("Invalid character on RGB"));
 		i++;
 	}
+	return (SUCCESS);
 }
 static int get_rgb(t_game *game, char *rgb_string, char *id)
 {
@@ -32,7 +33,7 @@ static int get_rgb(t_game *game, char *rgb_string, char *id)
 	i = 0;
 	if (validate_rgb_string(rgb_string) == ERROR)
 		return (ERROR);
-	rgb_array = ft_split(rgb_string, ",");
+	rgb_array = ft_split(rgb_string, ',');
 	if (!rgb_array || !rgb_array[0] || !rgb_array[1]
 		|| !rgb_array[2] || rgb_array[3])
 	{
@@ -55,7 +56,7 @@ static int get_rgb(t_game *game, char *rgb_string, char *id)
 	return (free_array(rgb_array), rgb_array = NULL, SUCCESS);
 }
 
-int	validate_path(char **path, char *id)
+int	validate_path(char **path)
 {
 	char	*trimmed_path;
 	int	fd;
@@ -63,7 +64,7 @@ int	validate_path(char **path, char *id)
 	trimmed_path = ft_strtrim(*path, " \t\n");
 	if (!trimmed_path)
 		return (print_error("Error trimming pathstring"));
-	fd = open(path, O_RDONLY);
+	fd = open(*path, O_RDONLY);
 	if (fd < 0)
 		return(print_error("Texture path invalid"));
 	close(fd);
@@ -84,11 +85,11 @@ static int	assign_path_identifier(t_game *game, char *path, char *id)
 		target = &game->textures->west;
 	else if (ft_strcmp(id, "EA") == 0)
 		target = &game->textures->east;
-	else if (ft_strcmp(id, "F") == 0 || ft_strcmp(id, "C" == 0))
+	else if (ft_strcmp(id, "F") == 0 || ft_strcmp(id, "C") == 0)
 		return (get_rgb(game, path, id));
 	if (target)
 	{
-		if (validate_path(&path, id) == ERROR)
+		if (validate_path(&path) == ERROR)
 			return (ERROR);
 		*target = ft_strdup(path);
 		if (!*target)
