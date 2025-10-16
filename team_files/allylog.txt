@@ -16,6 +16,7 @@
 -Added count rows for map
 -Added close and open file again
 -Added skip to map
+-Added copy 2d map to 2d array
 
 to do
 //Check for the spaces and walls
