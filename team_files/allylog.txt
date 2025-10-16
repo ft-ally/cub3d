@@ -19,6 +19,9 @@
 -Added copy 2d map to 2d array
 
 to do
+!! Elements can be set on any order!! -the skip rgb space will not work anymore. set flags for when they are all done?
+//invalid character check on 2d array
+
 //Check for the spaces and walls
 //Check for walkable path (flood fill)
 //Save map only to the struct
