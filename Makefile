@@ -21,35 +21,33 @@ RESET = \033[0m
 CC = cc
 FLAGS = -Wall -Wextra -Werror -g
 
-INC = -I $(LIBFT) -I $(MLX) -I $(CUB3D_HEADERS)
+INC = -I $(LIBFT) -I $(CUB3D_HEADERS)
 LIBFT = inc/libft
-MLX = inc/mlx_linux
 CUB3D_HEADERS = inc/cub3d_headers
 OBJ_DIR = obj/
 SRC_DIR = src/
 
 SRC_FILES = main.c\
-			parse_file.c\
-			utils_error.c\
 			init_program.c\
 			game_init.c \
-			free.c \
-			get_identifier.c \
-			tests.c\
-			get_rgb.c\
-			get_map.c \
+			parsing/get_identifier.c \
+			parsing/get_map.c \
+			parsing/get_rgb.c\
+			parsing/parse_file.c\
+			utils/utils_error.c\
+			utils/utils_free.c \
+			utils/utils_string.c \
+			utils/utils_tests.c\
 
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ = $(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))
 
-all: submodules $(NAME)
-submodules:
-	@git submodule update --init --recursive
+all: $(NAME)
+
 
 $(NAME): $(OBJ)
-	@make -C $(MLX)
 	@make -C $(LIBFT)
-	@$(CC) $(FLAGS) $(OBJ) -L $(LIBFT) -lft -L $(MLX) -lmlx_Linux -lXext -lX11 -lm -lz -o $(NAME)
+	@$(CC) $(FLAGS) $(OBJ) -L $(LIBFT) -lft -L  -lXext -lX11 -lm -lz -o $(NAME)
 	@echo "$(PINK)All files compiled!$(RESET)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
@@ -60,16 +58,14 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 clean:
 	@$(RM) -rf $(OBJ_DIR)
 	@make clean -C $(LIBFT)
-	@make clean -C $(MLX)
 	@echo "$(BLUE)All object files removed.$(RESET)"
 	
 fclean: clean
 	@$(RM) -f $(NAME)
 	@$(RM) -f $(LIBFT)/libft.a
-	@$(RM) -f $(MLX)/libmlx_Linux.a
 	@echo "$(BLUE)All executable files removed.$(RESET)"
 
 re: fclean all
 	@echo "$(PINK)Object + exec files have been cleaned and rebuilt.$(RESET)"
 
-.PHONY: all re clean fclean submodules
+.PHONY: all re clean fclean 

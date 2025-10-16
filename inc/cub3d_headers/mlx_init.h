@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_init.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:12:39 by tcakir-y          #+#    #+#             */
-/*   Updated: 2025/10/15 17:34:33 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2025/10/16 18:45:21 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MLX_INIT_H
 # define MLX_INIT_H
 
-int	game_init(t_game *game);
+// int	game_init(t_game *game);
 
 #endif

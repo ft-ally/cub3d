@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 15:07:02 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/16 17:39:11 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/16 18:59:01 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,11 @@ int	check_lines_after_rgb(int fd)
 int	count_rows_map(t_map *map, int fd)
 {
 	char	*line;
-	int		len;
+	size_t	len;
 	
 	if (check_lines_after_rgb(fd) == ERROR)
 		return (ERROR);
+	map->height = 1;
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -57,7 +58,7 @@ int	count_rows_map(t_map *map, int fd)
 			break ;
 		map->height++;
 		len = ft_strlen(line);
-		if (len > map->width)
+		if ((int)len > map->width)
 			map->width = len;
 		free(line);
 	}
@@ -66,9 +67,8 @@ int	count_rows_map(t_map *map, int fd)
 	return (SUCCESS);
 }
 
-int	skip_to_map(int fd)
+int	skip_to_map(int fd, char **line)
 {
-	char	*line;
 	int		i;
 	int		c;
 
@@ -76,31 +76,99 @@ int	skip_to_map(int fd)
 	c = 0;
 	while (1)
 	{
-		line = get_next_line(fd);
-		if (!line)
+		*line = get_next_line(fd);
+		if (!*line)
 			return (print_error("Get next line error"));
 		i = 0;
-		while (line[i])
+		while ((*line)[i])
 		{
-			if (i == 0 && line[i] == 'C')
+			if (i == 0 && (*line)[i] == 'C')
 			{
 				c = 1;
 				break ;
 			}
 			if (c == 1)
 			{
-				if (line[i] == ' ' || line[i] == '\t')
+				if ((*line)[i] == ' ' || (*line)[i] == '\t')
 				{
 					i++;
 					continue ;
 				}
-				if (line[i] == '1' || line[i] == '0')
-					return(free(line), SUCCESS);
+				if ((*line)[i] == '1' || (*line)[i] == '0')
+					return(SUCCESS);
 			}
 			i++;
 		}
-		free(line);
+		free(*line);
 	}
+	return (SUCCESS);
+}
+
+int	allocate_array(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	game->map->map_grid = malloc((game->map->height + 1) * sizeof(char *));
+	if (!game->map->map_grid)
+		return (print_error("Map allocation error"));
+	while (i < game->map->height)
+	{
+		game->map->map_grid[i] = malloc((game->map->width + 1) * sizeof (char));
+		if (!game->map->map_grid[i])
+		{
+			while (--i >= 0)
+				free(game->map->map_grid[i]);
+			free(game->map->map_grid);
+			return (print_error("Memory allocation failed"));
+		}
+		i++;
+	}
+	game->map->map_grid[i] = NULL;
+	return (SUCCESS);
+}
+
+void	pad_line(int width, char *str)
+{
+	int	len;
+	int	i;
+
+	len = ft_strlen(str);
+	if (len > 0 && str[len - 1] == '\n')
+ 	{
+		str[len - 1] = '\0';
+		len--;
+	}
+	i = len;
+	while (i < width)
+	{
+		str[i] = ' ';
+		i++;
+	}
+	str[width] = '\0';
+}
+
+int	copy_map_to_array(t_game *game, char *line, int fd)
+{
+	int		i;
+
+	i = 0;
+	if (allocate_array(game) == ERROR)
+		return (ERROR);
+	while (i < game->map->height)
+	{
+		game->map->map_grid[i] = ft_strcpy(game->map->map_grid[i], line);
+		if ((int)ft_strlen(game->map->map_grid[i]) != game->map->width)
+			pad_line(game->map->width, game->map->map_grid[i]);
+		free(line);
+		if (i < game->map->height - 1)
+		{
+			line = get_next_line(fd);
+			if (!line)
+				return (print_error("Get next line fail"));
+		}
+		i++;
+    }
 	return (SUCCESS);
 }
 
@@ -111,8 +179,11 @@ int	skip_to_map(int fd)
 ///don't forget to call free array if map is not valid
 int	get_map(t_game *game, int fd)
 {
-	(void)game;
-	if (skip_to_map(fd) == ERROR)
+	char	*line;
+
+	if (skip_to_map(fd, &line) == ERROR)
+		return (ERROR);
+	if (copy_map_to_array(game, line, fd) == ERROR)
 		return (ERROR);
 	return (SUCCESS);
 }

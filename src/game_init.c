@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:15:25 by tcakir-y          #+#    #+#             */
-/*   Updated: 2025/10/16 13:29:20 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/16 18:45:13 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,25 @@
 //		return ;
 //}
 
-int	game_init(t_game *game)
-{
-	// t_img_data	img;
+// int	game_init(t_game *game)
+// {
+// 	// t_img_data	img;
 
-	game->vis.mlx = malloc(sizeof(t_mlx));
-	if (!game->vis.mlx)
-		return (print_error("Error allocating memory for mlx"));
-	game->vis.mlx = mlx_init();
-	if (!game->vis.mlx)
-		return (free(game->vis.mlx), print_error("Error initializing mlx"));
-	game->vis.win = mlx_new_window(game->vis.mlx, WIDTH, HEIGHT, "Cub3D"); //fix later
-	if (!game->vis.win)
-		return (free(game->vis.mlx), print_error("Error creating window"));
-	//img.img = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_len,
-	//			&img.endian);
+// 	game->vis.mlx = malloc(sizeof(t_mlx));
+// 	if (!game->vis.mlx)
+// 		return (print_error("Error allocating memory for mlx"));
+// 	game->vis.mlx = mlx_init();
+// 	if (!game->vis.mlx)
+// 		return (free(game->vis.mlx), print_error("Error initializing mlx"));
+// 	game->vis.win = mlx_new_window(game->vis.mlx, WIDTH, HEIGHT, "Cub3D"); //fix later
+// 	if (!game->vis.win)
+// 		return (free(game->vis.mlx), print_error("Error creating window"));
+// 	//img.img = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_len,
+// 	//			&img.endian);
 	
-	mlx_loop(game->vis.mlx);
-	return (SUCCESS);
-}
+// 	mlx_loop(game->vis.mlx);
+// 	return (SUCCESS);
+// }
 
 //load images here later
 //put images to window here later

@@ -1,17 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_string.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 14:32:51 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/16 14:57:00 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/16 19:04:53 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+char	*ft_strcpy(char *dest, char *src)
+{
+	int		i;
+
+	i = 0;
+	while (src[i] && src[i] != '\n')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
 long	ft_atol(char *str)
 {
 	long	result;

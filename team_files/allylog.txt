@@ -13,6 +13,9 @@
 -Error protected rgb string (against invalid char, <0 && >255)
 -Added random textures for path
 -Added check for new lines after rgb
+-Added count rows for map
+-Added close and open file again
+-Added skip to map
 
 to do
 //Check for the spaces and walls
