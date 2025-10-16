@@ -37,6 +37,7 @@ SRC_FILES = main.c\
 			get_identifier.c \
 			tests.c\
 			get_rgb.c\
+			get_map.c \
 
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ = $(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))

@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 13:29:47 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/15 19:27:07 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/16 15:50:33 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ typedef struct s_textures
 typedef struct s_map
 {
 	char	**map_grid;
-	
+	int		width;
+	int		height;
 } t_map;
 
 typedef struct s_game

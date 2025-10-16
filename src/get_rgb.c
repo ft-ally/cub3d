@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 14:25:37 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/16 14:56:51 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/16 15:27:38 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int	get_rgb(t_game *game, char *rgb_string, char *id)
 	int		i;
 
 	i = 0;
-	printf("DEBUG: rgb string: %s\n", rgb_string);
 	if (validate_rgb_string(rgb_string) == ERROR)
 		return (ERROR);
 	rgb_array = ft_split(rgb_string, ',');

@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:21:51 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/16 14:52:59 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/16 15:28:16 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,6 @@ void	free_textures(t_game *g)
 void	free_all(t_game *game)
 {
 	free_textures(game);
+	if (game && game->map && game->map->map_grid)
+		free_array(game->map->map_grid);
 }

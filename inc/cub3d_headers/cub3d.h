@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:24:29 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/16 14:33:57 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/16 15:07:41 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ int	print_error(char *str);
 
 /* ====utils.c====*/
 long	ft_atol(char *str);
+
+/*======get_map.c=====*/
+int	get_map(t_game *game, int fd);
 
 /*============|tests.c|===========*/
 void	print_extracted_data(t_game *game);

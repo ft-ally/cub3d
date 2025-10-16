@@ -12,12 +12,16 @@
 16okt
 -Error protected rgb string (against invalid char, <0 && >255)
 -Added random textures for path
--
+-Added check for new lines after rgb
+
 to do
-Double check the path, it takes everything until '\0' -> what if there's a space and more string?? 
-//Protect ft strdup mallocs game assets are initially malloc'd ->free it 
-//Save the FC RGB in struct
-//Error check the FC RGB
 //Check for the spaces and walls
 //Check for walkable path (flood fill)
 //Save map only to the struct
+
+
+done
+//Double check the path, it takes everything until '\0' -> what if there's a space and more string?? 
+//Protect ft strdup mallocs game assets are initially malloc'd ->free it 
+//Save the FC RGB in struct
+//Error check the FC RGB
