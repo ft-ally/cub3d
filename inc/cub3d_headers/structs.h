@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 13:29:47 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/15 19:27:07 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/16 13:44:14 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 # define STRUCTS_H
 
 #include "cub3d.h"
+
+typedef struct s_img_data t_img_data;
+typedef struct s_gfx t_gfx;
+typedef struct s_colors t_colors;
+typedef struct s_textures t_textures;
+typedef struct s_map t_map;
+typedef struct s_game t_game;
 
 typedef struct s_img_data
 {
@@ -25,11 +32,14 @@ typedef struct s_img_data
 	int		endian;
 } t_img_data;
 
-typedef struct s_mlx
+
+typedef struct s_gfx
 {
-	void	*mlx;
-	void	*win;
-}	t_mlx;
+	void		*mlx;
+	void		*win;
+	t_img_data	image;
+}	t_gfx;
+
 typedef struct s_colors
 {
 	int	r;
@@ -60,7 +70,7 @@ typedef struct s_game
 	t_colors	floor;
 	t_textures	*textures;
 	t_map		*map;
-	t_mlx		vis;
+	t_gfx		gfx;
 } t_game;
 
 #endif

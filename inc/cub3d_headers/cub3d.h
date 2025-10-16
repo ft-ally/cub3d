@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:24:29 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/15 19:26:53 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/16 13:44:57 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 
 # define SUCCESS 0
 # define ERROR 1
-# define WIDTH 1920
-# define HEIGHT 1080
 
 /*=========|free.c|========*/
 void free_textures(t_game *g);

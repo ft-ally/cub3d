@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:23:58 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/16 13:26:04 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/16 14:02:01 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char *argv[])
 
 	if (init_program(&game, argc, argv) != SUCCESS)
 		return (free_all(&game), ERROR);
-	// if (game_init(&game) != SUCCESS)
+	// if (init_game(&game) != SUCCESS)
 	// 	return (ERROR);
 	printf("texture path north: %s\n", game.textures->north);
 	printf("texture path south: %s\n", game.textures->south);
