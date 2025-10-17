@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_identifier.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 19:06:26 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/16 13:25:12 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/18 00:54:57 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,8 @@ int	validate_rgb_string(char *str)
 static int get_rgb(t_game *game, char *rgb_string, char *id)
 {
 	char	**rgb_array;
-	int		i;
+	(void)game;
 
-	i = 0;
 	if (validate_rgb_string(rgb_string) == ERROR)
 		return (ERROR);
 	rgb_array = ft_split(rgb_string, ',');
@@ -43,15 +42,15 @@ static int get_rgb(t_game *game, char *rgb_string, char *id)
 	}
 	if (ft_strcmp(id, "F") == 0)
 	{
-		game->floor.r =  ft_atoi(rgb_array[0]);
-		game->floor.g = ft_atoi(rgb_array[1]);
-		game->floor.b = ft_atoi(rgb_array[2]);
+		// game->floor.r =  ft_atoi(rgb_array[0]);
+		// game->floor.g = ft_atoi(rgb_array[1]);
+		// game->floor.b = ft_atoi(rgb_array[2]);
 	}
 	else
 	{
-		game->ceiling.r = ft_atoi(rgb_array[0]);
-		game->ceiling.g = ft_atoi(rgb_array[1]);
-		game->ceiling.b = ft_atoi(rgb_array[2]);
+		// game->ceiling.r = ft_atoi(rgb_array[0]);
+		// game->ceiling.g = ft_atoi(rgb_array[1]);
+		// game->ceiling.b = ft_atoi(rgb_array[2]);
 	}
 	return (free_array(rgb_array), rgb_array = NULL, SUCCESS);
 }
