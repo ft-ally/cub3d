@@ -1,0 +1,5 @@
+17 OCTOBER
+	*added rgb bit shift formula for ceiling and floor
+	*added the function for ceiling and floor coloring
+	*added ESC key pressing functionality to exit the program
+

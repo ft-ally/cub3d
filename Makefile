@@ -31,8 +31,9 @@ SRC_DIR = src/
 SRC_FILES = main.c\
 			parse_file.c\
 			utils_error.c\
+			init_game.c \
+			init_mlx.c\
 			init_program.c\
-			game_init.c \
 			free.c \
 			get_identifier.c \
 
