@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:12:39 by tcakir-y          #+#    #+#             */
-/*   Updated: 2025/10/18 00:29:37 by tutku            ###   ########.fr       */
+/*   Updated: 2025/10/20 01:25:40 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@
 # define ARROW_DOWN  65364
 # define ARROW_LEFT  65361
 # define ARROW_RIGHT 65363
+
+/*=========|init_background.c|========*/
+void	color_floor(t_game *game);
+void	color_ceiling(t_game *game);
 
 /*=========|init_game.c|========*/
 int	init_game(t_game *game);

@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 17:47:42 by tutku             #+#    #+#             */
-/*   Updated: 2025/10/18 00:40:32 by tutku            ###   ########.fr       */
+/*   Updated: 2025/10/20 01:24:32 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,52 +53,7 @@
 /// + (bytes to skip whole rows) (Jump down y rows)
 /// + (bytes to skip pixels in the row)(Move right x pixels in that row)
 
-static void	put_pixel(t_game *game, int x, int y, int rgb_val)
-{
-	char	*dest;
 
-	if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
-		return ;
-	dest = game->gfx.image.addr
-		+ (y * game->gfx.image.line_len + x * game->gfx.image.bpp / 8);
-	*(int *)dest = rgb_val;
-}
-
-void	color_ceiling(t_game *game)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < (HEIGHT / 2))
-	{
-		x = 0;
-		while (x < WIDTH)
-		{
-			put_pixel(game, x, y, game->ceiling);
-			x++;
-		}
-		y++;
-	}
-}
-
-void	color_floor(t_game *game)
-{
-	int	x;
-	int	y;
-
-	y = HEIGHT / 2;
-	while (y < HEIGHT)
-	{
-		x = 0;
-		while (x < WIDTH)
-		{
-			put_pixel(game, x, y, game->floor);
-			x++;
-		}
-		y++;
-	}
-}
 
 static int	pressed_esc(t_game *game)
 {

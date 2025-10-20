@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 13:29:47 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/17 23:20:26 by tutku            ###   ########.fr       */
+/*   Updated: 2025/10/20 01:45:11 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,21 @@ typedef struct s_textures
 typedef struct s_map
 {
 	char	**map_grid;
+	int		width;
+	int		height;
 	
 } t_map;
+
+typedef struct s_player
+{
+	double	x;
+	double	y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+	
+} t_player;
 
 typedef struct s_game
 {
@@ -66,6 +79,7 @@ typedef struct s_game
 	t_textures	*textures;
 	t_map		*map;
 	t_gfx		gfx;
+	t_player	player;
 	int			ceiling;
 	int			floor;
 } t_game;
