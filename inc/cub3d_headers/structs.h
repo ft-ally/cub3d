@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 13:29:47 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/20 01:45:11 by tutku            ###   ########.fr       */
+/*   Updated: 2025/10/20 20:05:49 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,34 +23,26 @@ typedef struct s_textures t_textures;
 typedef struct s_map t_map;
 typedef struct s_game t_game;
 
-typedef struct s_img_data
+typedef struct s_img
 {
 	void	*img;
 	char	*addr;
 	int		bpp; //bits_per_pixel
 	int		line_len;
 	int		endian; //tells how colors are stored in memory
-} t_img_data;
+	int		w; //texture width
+	int		h; //texture height
+} t_img;
 
 
 typedef struct s_gfx
 {
-	void		*mlx;
-	void		*win;
-	t_img_data	image;
-	t_img_data	north;
-	t_img_data	south;
-	t_img_data	east;
-	t_img_data	west;
+	void	*mlx;
+	void	*win;
+	t_img	image;
+	t_img	wall[4];
 }	t_gfx;
 
-typedef struct s_textures
-{
-	char	*north;
-	char	*south;
-	char	*west;
-	char	*east;
-} t_textures;
 
 typedef struct s_map
 {
@@ -76,12 +68,12 @@ typedef struct s_game
 	char		direction;
 	int			dir_x;
 	int			dir_y;
-	t_textures	*textures;
+	char		*textures[4];
 	t_map		*map;
 	t_gfx		gfx;
 	t_player	player;
-	int			ceiling;
-	int			floor;
+	int			ceiling_rgb;
+	int			floor_rgb;
 } t_game;
 
 #endif

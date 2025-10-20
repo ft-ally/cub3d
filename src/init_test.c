@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 16:53:17 by tutku             #+#    #+#             */
-/*   Updated: 2025/10/20 17:02:29 by tutku            ###   ########.fr       */
+/*   Updated: 2025/10/20 19:24:38 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,12 @@ static const char *MAP_LIT[] = {
 
 int init_test(t_game *game)
 {
-    game->ceiling = (8 << 16) | (148 << 8) | 159;
-    game->floor   = (9 << 16) | (54 << 8) | 108;
-
-    static t_textures textures = {
-        .north = "./textures/north.xpm",
-        .south = "./textures/south.xpm",
-        .west  = "./textures/west.xpm",
-        .east  = "./textures/east.xpm"
-    };
-    game->textures = &textures;
+    game->ceiling_rgb = (8 << 16) | (148 << 8) | 159;
+    game->floor_rgb   = (9 << 16) | (54 << 8) | 108;
+    game->textures[NORTH] = "./textures/north.xpm";
+    game->textures[SOUTH] = "./textures/south.xpm";
+    game->textures[WEST] = "./textures/west.xpm";
+    game->textures[EAST] = "./textures/east.xpm";
     return (SUCCESS);
 }
 

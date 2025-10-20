@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:21:51 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/20 17:04:19 by tutku            ###   ########.fr       */
+/*   Updated: 2025/10/20 20:06:22 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void free_array(char **array)
 	}
 	free(array);
 }
+
 void free_textures(t_game *g)
 {
 	if (!g || !g->textures)
@@ -41,12 +42,22 @@ void free_textures(t_game *g)
 	free(g->textures);
 }
 
-// void free_all(t_game *game)
-// {
-	
-// 	free_textures(game);
-	
-// }
+
+
+int	free_loaded_textures(t_game *game, int end, int status)
+{
+	int	i;
+
+	i = 0;
+	while (i < end)
+	{
+		mlx_destroy_image(game->gfx.mlx, game->gfx.wall[i].img);
+		i++;
+	}
+	if (status != SUCCESS)
+		return (print_error("Failed to load XPM file."));
+	return (SUCCESS);
+}
 
 int	ft_free_mlx(t_game *game, int error_type)
 {
@@ -60,6 +71,7 @@ int	ft_free_mlx(t_game *game, int error_type)
 	{
 		if (game->gfx.image.img)
 			mlx_destroy_image(game->gfx.mlx, game->gfx.image.img);
+		free_loaded_textures(game, 4, SUCCESS);
 		if (game->gfx.win)
 			mlx_destroy_window(game->gfx.mlx, game->gfx.win);
 		if (game->gfx.mlx)
@@ -68,12 +80,7 @@ int	ft_free_mlx(t_game *game, int error_type)
 			free(game->gfx.mlx);
         	game->gfx.mlx = NULL;
 		}
-		// mlx_destroy_image(game->gfx.mlx, game->textures->east);
-		// mlx_destroy_image(game->gfx.mlx, game->textures->north);
-		// mlx_destroy_image(game->gfx.mlx, game->textures->south);
-		// mlx_destroy_image(game->gfx.mlx, game->textures->west);
 		exit(0);
-		return (0);
 	}
 	return (SUCCESS);
 }

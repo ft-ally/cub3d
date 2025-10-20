@@ -6,12 +6,17 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:12:39 by tcakir-y          #+#    #+#             */
-/*   Updated: 2025/10/20 16:58:33 by tutku            ###   ########.fr       */
+/*   Updated: 2025/10/20 20:01:03 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MLX_INIT_H
 # define MLX_INIT_H
+
+# define NORTH 0
+# define SOUTH 1
+# define WEST  2
+# define EAST  3
 
 # define WIDTH 1920
 # define HEIGHT 1080
@@ -39,6 +44,7 @@ void	color_ceiling(t_game *game);
 int	init_game(t_game *game);
 
 /*=========|init_mlx.c|========*/
+int	load_xpm_files(t_game *game);
 int	init_mlx(t_game *game);
 int	ft_free_mlx(t_game *game, int error_type);
 
@@ -46,5 +52,11 @@ int	ft_free_mlx(t_game *game, int error_type);
 int setup_map_writable(t_game *game);
 int init_test(t_game *game);
 void free_map(t_map *m);
+
+/*=========|init_player.c|========*/ //move to cub3d.h
+int	init_player_pos(t_game *game);
+
+/*=========|free.c|========*/
+int	free_loaded_textures(t_game *game, int range, int status);
 
 #endif
