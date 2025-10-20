@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:12:39 by tcakir-y          #+#    #+#             */
-/*   Updated: 2025/10/20 01:25:40 by tutku            ###   ########.fr       */
+/*   Updated: 2025/10/20 16:58:33 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,10 @@ int	init_game(t_game *game);
 /*=========|init_mlx.c|========*/
 int	init_mlx(t_game *game);
 int	ft_free_mlx(t_game *game, int error_type);
+
+/*=========|init_test.c|========*/
+int setup_map_writable(t_game *game);
+int init_test(t_game *game);
+void free_map(t_map *m);
 
 #endif

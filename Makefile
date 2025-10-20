@@ -37,6 +37,7 @@ SRC_FILES = main.c\
 			init_program.c\
 			free.c \
 			get_identifier.c \
+			init_test.c #test
 
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ = $(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))

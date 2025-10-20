@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:21:51 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/18 00:32:07 by tutku            ###   ########.fr       */
+/*   Updated: 2025/10/20 17:04:19 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void free_textures(t_game *g)
 
 int	ft_free_mlx(t_game *game, int error_type)
 {
+	free_map(game->map); //test
 	if (error_type == WIN_FAIL)
 	{
 		mlx_destroy_display(game->gfx.mlx);
