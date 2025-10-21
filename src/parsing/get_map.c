@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 15:07:02 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/21 15:38:10 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/21 17:10:03 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,50 +104,6 @@ int	skip_to_map(int fd, char **line)
 	return (SUCCESS);
 }
 
-int	allocate_array(t_game *game)
-{
-	int	i;
-
-	i = 0;
-	game->map->map_grid = malloc((game->map->height + 1) * sizeof(char *));
-	if (!game->map->map_grid)
-		return (print_error("Map allocation error"));
-	while (i < game->map->height)
-	{
-		game->map->map_grid[i] = malloc((game->map->width + 1) * sizeof (char));
-		if (!game->map->map_grid[i])
-		{
-			while (--i >= 0)
-				free(game->map->map_grid[i]);
-			free(game->map->map_grid);
-			return (print_error("Memory allocation failed"));
-		}
-		i++;
-	}
-	game->map->map_grid[i] = NULL;
-	return (SUCCESS);
-}
-
-void	pad_line(int width, char *str)
-{
-	int	len;
-	int	i;
-
-	len = ft_strlen(str);
-	if (len > 0 && str[len - 1] == '\n')
- 	{
-		str[len - 1] = '\0';
-		len--;
-	}
-	i = len;
-	while (i < width)
-	{
-		str[i] = ' ';
-		i++;
-	}
-	str[width] = '\0';
-}
-
 int	copy_map_to_array(t_game *game, char *line, int fd)
 {
 	int		i;
@@ -185,11 +141,11 @@ int	get_map(t_game *game, int fd)
 		return (ERROR);
 	if (copy_map_to_array(game, line, fd) == ERROR)
 		return (ERROR);
+	if (validate_map(game) == ERROR)
+		return (ERROR);
 	return (SUCCESS);
 }
 
-	// validate_walls();
-	// validate_walkable_path();
 	//So rught now, go to the EOF on this fd.
 	//Count how many get next line calls (rows)
 	//Count how many chars -> longest one is the max column

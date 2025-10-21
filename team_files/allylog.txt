@@ -23,6 +23,9 @@
 	-get identifier to be in a while loop
 	-take rgb string into an int
 	-use wall array for loading map
+-Map: check invalid character, check multiple spawns
+-Map: store spawn dir
+
 
 
 

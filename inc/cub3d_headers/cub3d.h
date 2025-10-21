@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:24:29 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/16 18:51:35 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/21 17:09:52 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,16 @@ int		count_rows_map(t_map *map, int fd);
 /*========|get_rgb.c|===========*/
 int		get_rgb(t_game *game, char *rgb_string, char *id);
 
+/*========|get_utils.c|===========*/
+int		get_wall_index(char *id);
+int		all_id_found(t_game *game);
+void	pad_line(int width, char *str);
+int		allocate_array(t_game *game);
+
+/*=========|validate_map.c|========*/
+int	validate_map(t_game *game);
+
 /*=========|parse_file.c|========*/
-int		parse_file(t_game *game, char *file);
 
 
 /*================|||UTILS|||==============*/

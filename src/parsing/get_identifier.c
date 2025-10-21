@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 19:06:26 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/21 16:49:47 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/21 17:03:23 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,6 @@ static int	validate_path(char **path)
 	return (SUCCESS);
 }
 
-int	get_wall_index(char *id)
-{
-	if (ft_strcmp(id, "NO") == 0)
-		return (NORTH);
-	if (ft_strcmp(id, "SO") == 0)
-		return (SOUTH);
-	if (ft_strcmp(id, "WE") == 0)
-		return (WEST);
-	if (ft_strcmp(id, "EA") == 0)
-		return (EAST);
-	return (-1);
-}
 
 static int	assign_path_identifier(t_game *game, char *path, char *id)
 {
@@ -120,22 +108,6 @@ static int	get_next_identifier(t_game *game, int fd, int i)
 		return (extract_path(game, id, line, i));
 	}
 	return (SUCCESS);
-}
-
-int	all_id_found(t_game *game)
-{
-	int	i;
-
-	i = 0;
-	if (game->ceiling_rgb == -1 || game->floor_rgb == -1)
-		return (0);
-	while (i < 4)
-	{
-		if (game->gfx.wall[i].addr == NULL)
-			return (0);
-		i++;
-	}
-	return (1);
 }
 
 int	get_identifier(t_game *game, int fd)
