@@ -25,7 +25,8 @@
 	-use wall array for loading map
 -Map: check invalid character, check multiple spawns
 -Map: store spawn dir
-
+-Map: check top_bottom, check first_last
+-Map: dup map, flood fill
 
 
 

@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 15:07:02 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/21 17:10:03 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/21 18:42:09 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,11 +128,6 @@ int	copy_map_to_array(t_game *game, char *line, int fd)
 	return (SUCCESS);
 }
 
-/// @brief 
-///Copy the map into a 2d array, 
-///validate the map for walls
-///validate walkable path,
-///don't forget to call free array if map is not valid
 int	get_map(t_game *game, int fd)
 {
 	char	*line;
@@ -145,12 +140,3 @@ int	get_map(t_game *game, int fd)
 		return (ERROR);
 	return (SUCCESS);
 }
-
-	//So rught now, go to the EOF on this fd.
-	//Count how many get next line calls (rows)
-	//Count how many chars -> longest one is the max column
-	//Close file
-	//Open the file again
-	//malloc the 2d array with rows and columns
-	//Skip until line[i] == '1' or 0
-	//Then copy?

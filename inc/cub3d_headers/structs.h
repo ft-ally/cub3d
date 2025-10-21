@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 13:29:47 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/21 17:34:09 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/21 17:40:44 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ typedef struct s_game
 	t_gfx		gfx; //not a pointer, no malloc
 	t_player	player;
 	char		spawn_dir;
+	int			spawn_x;
+	int			spawn_y;
 	int			ceiling_rgb;
 	int			floor_rgb;
 } t_game;
