@@ -6,14 +6,14 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 15:07:02 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/16 18:59:01 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/21 15:38:10 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-///If the first lines after the rgb are not filled with \n or spaces, ERROR
-int	check_lines_after_rgb(int fd)
+///If the first lines after the ids are not filled with \n or spaces, ERROR
+int	check_new_lines(int fd)
 {
 	int		i;
 	char	*line;
@@ -33,7 +33,7 @@ int	check_lines_after_rgb(int fd)
 				break ;
 			}
 			if (line[i] != '0' && line[i] != ' '
-				&& line[i] != '1' )
+				&& line[i] != '1' && line[i] !='\t' )
 					return(free(line), print_error("Invalid map format!"));
 			else if (line[i] == '1' || line[i] == '0')
 				return (free(line), SUCCESS);
@@ -48,7 +48,7 @@ int	count_rows_map(t_map *map, int fd)
 	char	*line;
 	size_t	len;
 	
-	if (check_lines_after_rgb(fd) == ERROR)
+	if (check_new_lines(fd) == ERROR)
 		return (ERROR);
 	map->height = 1;
 	while (1)

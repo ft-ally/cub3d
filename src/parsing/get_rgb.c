@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 14:25:37 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/16 15:27:38 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/21 15:20:36 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,30 +26,22 @@ static int	validate_rgb_string(char *str)
 	return (SUCCESS);
 }
 
-static int	assign_rgb_to_struct(t_game *game, char *id, char **rgb_array)
+static int	convert_rgb(t_game *game, char *id, char **rgb_array)
 {
 	long	r;
 	long	g;
 	long	b;
 
-	r = ft_atoi(rgb_array[0]);
-	g = ft_atoi(rgb_array[1]);
-	b = ft_atoi(rgb_array[2]);
+	r = ft_atol(rgb_array[0]);
+	g = ft_atol(rgb_array[1]);
+	b = ft_atol(rgb_array[2]);
 	if (r < 0 || r > 255 || g < 0 || g > 255
 		|| b < 0 || b > 255)
 		return (print_error("Invalid RGB identifier"));
-	if (ft_strcmp(id, "F") == 0)
-	{
-		game->floor.r = r;
-		game->floor.g = g;
-		game->floor.b = b;
-	}
+	if (ft_strcmp(id, "F ") == 0)
+		game->floor_rgb = ((int)r << 16 | (int)g << 8 | (int)b);
 	else
-	{
-		game->ceiling.r = r;
-		game->ceiling.g = g;
-		game->ceiling.b = b;
-	}
+		game->ceiling_rgb = ((int)r << 16 | (int)g << 8 | (int)b);
 	return (SUCCESS);
 }
 
@@ -59,6 +51,9 @@ int	get_rgb(t_game *game, char *rgb_string, char *id)
 	int		i;
 
 	i = 0;
+	if ((ft_strcmp(id, "F ") == 0 && game->floor_rgb != -1)
+	 || ((ft_strcmp(id, "C ") == 0) && game->ceiling_rgb != -1))
+		return (print_error("Error, duplicate RGB string found"));
 	if (validate_rgb_string(rgb_string) == ERROR)
 		return (ERROR);
 	rgb_array = ft_split(rgb_string, ',');
@@ -68,7 +63,7 @@ int	get_rgb(t_game *game, char *rgb_string, char *id)
 		free_array(rgb_array);
 		return (print_error("RGB error"));
 	}
-	if (assign_rgb_to_struct(game, id, rgb_array) == ERROR)
+	if (convert_rgb(game, id, rgb_array) == ERROR)
 		return (free_array(rgb_array), ERROR);
 	free_array(rgb_array);
 	return (SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 13:29:47 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/16 17:31:04 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/21 15:46:23 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,53 +16,68 @@
 
 #include "cub3d.h"
 
-typedef struct s_img_data
+# define NORTH 0
+# define SOUTH 1
+# define EAST  2
+# define WEST  3
+
+typedef struct s_img_data t_img_data;
+typedef struct s_gfx t_gfx;
+typedef struct s_colors t_colors;
+typedef struct s_textures t_textures;
+typedef struct s_map t_map;
+typedef struct s_game t_game;
+
+typedef struct s_img
 {
 	void	*img;
 	char	*addr;
-	int		bits_per_pixel;
+	int		bpp; //bits_per_pixel
 	int		line_len;
-	int		endian;
-} t_img_data;
+	int		endian; //tells how colors are stored in memory
+	int		w; //texture width
+	int		h; //texture height
+} t_img;
 
-typedef struct s_mlx
+
+typedef struct s_gfx
 {
 	void	*mlx;
 	void	*win;
-}	t_mlx;
-typedef struct s_colors
-{
-	int	r;
-	int	g;
-	int	b;
-} t_colors;
+	t_img	image;
+	t_img	wall[4];
+}	t_gfx;
 
-typedef struct s_textures
-{
-	char	*north;
-	char	*south;
-	char	*west;
-	char	*east;
-} t_textures;
 
 typedef struct s_map
 {
 	char	**map_grid;
 	int		width;
 	int		height;
+	
 } t_map;
+
+typedef struct s_player
+{
+	double	x;
+	double	y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+	
+} t_player;
 
 typedef struct s_game
 {
 	char		direction;
 	int			dir_x;
 	int			dir_y;
-	t_colors	ceiling;
-	t_colors	floor;
-	t_textures	*textures;
 	t_map		*map;
-	t_mlx		vis;
+	t_gfx		gfx; //not a pointer, no malloc
+	t_player	player;
+	int			ceiling_rgb;
+	int			floor_rgb;
 } t_game;
 
 #endif
-

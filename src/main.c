@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:23:58 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/16 14:13:35 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/21 14:30:51 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int argc, char *argv[])
 		return (free_all(&game), ERROR);
 	// if (game_init(&game) != SUCCESS)
 	// 	return (ERROR);
+	printf("Done");
 	print_extracted_data(&game);
 	free_all(&game);
 	return (SUCCESS);

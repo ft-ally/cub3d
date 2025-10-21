@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 19:06:26 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/16 14:54:15 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/21 16:49:47 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,44 +20,58 @@ static int	validate_path(char **path)
 	trimmed_path = ft_strtrim(*path, " \t\n");
 	if (!trimmed_path)
 		return (print_error("Error trimming pathstring"));
-	fd = open(*path, O_RDONLY);
+	fd = open(trimmed_path, O_RDONLY);
 	if (fd < 0)
-		return (print_error("Texture path invalid"));
+		return (free(trimmed_path), print_error("Texture path invalid"));
 	close(fd);
-	*path = trimmed_path;
+	free(*path);
+	*path = ft_strdup(trimmed_path);
+	free(trimmed_path);
 	return (SUCCESS);
+}
+
+int	get_wall_index(char *id)
+{
+	if (ft_strcmp(id, "NO") == 0)
+		return (NORTH);
+	if (ft_strcmp(id, "SO") == 0)
+		return (SOUTH);
+	if (ft_strcmp(id, "WE") == 0)
+		return (WEST);
+	if (ft_strcmp(id, "EA") == 0)
+		return (EAST);
+	return (-1);
 }
 
 static int	assign_path_identifier(t_game *game, char *path, char *id)
 {
 	char	**target;
+	int		idn;
 
 	target = NULL;
-	if (ft_strcmp(id, "NO") == 0)
-		target = &game->textures->north;
-	else if (ft_strcmp(id, "SO") == 0)
-		target = &game->textures->south;
-	else if (ft_strcmp(id, "WE") == 0)
-		target = &game->textures->west;
-	else if (ft_strcmp(id, "EA") == 0)
-		target = &game->textures->east;
-	else if (ft_strcmp(id, "F") == 0 || ft_strcmp(id, "C") == 0)
+	if (ft_strcmp(id, "F ") == 0 || ft_strcmp(id, "C ") == 0)
 		return (get_rgb(game, path, id));
-	if (target)
+	idn = get_wall_index(id);
+	if (idn != -1)
 	{
 		if (validate_path(&path) == ERROR)
 			return (ERROR);
-		*target = ft_strdup(path);
+		if (game->gfx.wall[idn].addr != NULL)
+			return(print_error("Duplicate identifiers found"));
+		game->gfx.wall[idn].addr = ft_strdup(path);
 		free(path);
-		if (!*target)
-			return (print_error("Error allocating texture"));
+		if (!game->gfx.wall[idn].addr)
+			return (print_error("Error allocating wall to gfx struct"));
 		return (SUCCESS);
 	}
+	else
+		return(print_error("Invalid identifier"));
 	return (ERROR);
 }
 
 static int	extract_path(t_game *game, char *id, char *line, int i)
 {
+	//only free here!
 	int		start;
 	char	*path;
 
@@ -69,18 +83,19 @@ static int	extract_path(t_game *game, char *id, char *line, int i)
 		i++;
 	path = ft_substr(line, start, i - start);
 	if (!path)
-		return (free(path), print_error("Malloc fail"));
+		return (free(line), free(id), print_error("Error allocating path"));
 	if (assign_path_identifier(game, path, id) != SUCCESS)
-		return (free(path), free(line), ERROR);
-	free(path);
+		return (free(path), free(line), free(id), ERROR);
 	free(line);
+	free(id);
 	return (SUCCESS);
 }
 
-static int	get_next_identifier(t_game *game, int fd, char *id)
+static int	get_next_identifier(t_game *game, int fd, int i)
 {
 	char	*line;
-	int		i;
+	char	*id_string;
+	char	*id;
 
 	while (1)
 	{
@@ -90,35 +105,49 @@ static int	get_next_identifier(t_game *game, int fd, char *id)
 		i = 0;
 		while (ft_isspace(line[i]))
 			i++;
+		if (line[i] == '1' || line[i] == '0')
+			return(free(line), print_error("Map error! Either missing identfier or map not at the end"));
 		if (line[i] == '\n' || line[i] == '\0')
 		{
 			free(line);
 			continue ;
 		}
-		if (ft_strncmp(&line[i], id, ft_strlen(id)) == 0)
-			return (extract_path(game, id, line, i));
-		else
-		{
-			free(line);
-			return (print_error("Identifier not found or not in order"));
-		}
+		id_string = ft_strtrim(line, "\t\n");
+		id = ft_substr(id_string, 0, 2); //malloc'd, free inside extract
+		free(id_string);
+		if (!id)
+			return (free(line), print_error("Error allocating id"));
+		return (extract_path(game, id, line, i));
 	}
 	return (SUCCESS);
 }
 
+int	all_id_found(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	if (game->ceiling_rgb == -1 || game->floor_rgb == -1)
+		return (0);
+	while (i < 4)
+	{
+		if (game->gfx.wall[i].addr == NULL)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int	get_identifier(t_game *game, int fd)
 {
-	if (get_next_identifier(game, fd, "NO") == ERROR)
-		return (ERROR);
-	if (get_next_identifier(game, fd, "SO") == ERROR)
-		return (ERROR);
-	if (get_next_identifier(game, fd, "WE") == ERROR)
-		return (ERROR);
-	if (get_next_identifier(game, fd, "EA") == ERROR)
-		return (ERROR);
-	if (get_next_identifier(game, fd, "F") == ERROR)
-		return (ERROR);
-	if (get_next_identifier(game, fd, "C") == ERROR)
-		return (ERROR);
+	int	i;
+
+	i = 0;
+	while (!all_id_found(game))
+	{
+		if (get_next_identifier(game, fd, i) == ERROR)
+			return (ERROR);
+	}
 	return (SUCCESS);
 }
+

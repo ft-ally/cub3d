@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 14:13:25 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/16 19:01:28 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/21 15:46:16 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,21 @@ void	print_map(t_game *game)
 /// @brief Print and validate data 
 void	print_extracted_data(t_game *game)
 {
+
 	printf("====================\n");
 	printf("Texture paths\n");
 	printf("====================\n");
-	printf("North: %s\n", game->textures->north);
-	printf("South: %s\n", game->textures->south);
-	printf("East: %s\n", game->textures->east);
-	printf("West: %s\n", game->textures->west);
+	printf("North: %s\n", game->gfx.wall[0].addr);
+	printf("South: %s\n", game->gfx.wall[1].addr);
+	printf("East: %s\n", game->gfx.wall[2].addr);
+	printf("West: %s\n", game->gfx.wall[3].addr);
+	
 	printf("====================\n");
 	printf("Colors\n");
 	printf("====================\n");
 	printf("===Floor===\n");
-	printf("R:%i || G:%i || B:%i\n", game->floor.r,
-		game->floor.g, game->floor.b);
+	printf("%d\n", game->floor_rgb);
 	printf("===Ceiling===\n");
-	printf("R:%i || G: %i || B:%i\n",
-		game->ceiling.r, game->ceiling.g, game->ceiling.b);
+	printf("%d\n", game->ceiling_rgb);
 	print_map(game);
 }

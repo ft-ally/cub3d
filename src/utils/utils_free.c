@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:21:51 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/16 18:51:22 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/21 14:53:14 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,15 @@ void	free_array(char **array)
 
 void	free_textures(t_game *g)
 {
-	if (!g->textures)
-		return ;
-	if (g->textures->north)
-		free(g->textures->north);
-	if (g->textures->south)
-		free(g->textures->south);
-	if (g->textures->east)
-		free(g->textures->east);
-	if (g->textures->west)
-		free(g->textures->west);
-	free(g->textures);
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		if (g->gfx.wall[i].addr)
+			free(g->gfx.wall[i].addr);
+		i++;
+	}
 }
 
 void	free_all(t_game *game)
