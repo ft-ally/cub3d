@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:21:51 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/20 20:06:22 by tutku            ###   ########.fr       */
+/*   Updated: 2025/10/20 20:16:23 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,20 @@ void free_array(char **array)
 	free(array);
 }
 
-void free_textures(t_game *g)
-{
-	if (!g || !g->textures)
-		return ;
-	if (g->textures->north)
-		free(g->textures->north);
-	if (g->textures->south)
-		free(g->textures->south);
-	if (g->textures->east)
-		free(g->textures->east);
-	if (g->textures->west)
-		free(g->textures->west);
-	free(g->textures);
-}
+// void free_textures(t_game *g)
+// {
+// 	if (!g || !g->textures)
+// 		return ;
+// 	if (g->textures->north)
+// 		free(g->textures->north);
+// 	if (g->textures->south)
+// 		free(g->textures->south);
+// 	if (g->textures->east)
+// 		free(g->textures->east);
+// 	if (g->textures->west)
+// 		free(g->textures->west);
+// 	free(g->textures);
+// }
 
 
 

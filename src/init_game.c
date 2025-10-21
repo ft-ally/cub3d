@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:15:25 by tcakir-y          #+#    #+#             */
-/*   Updated: 2025/10/20 19:52:14 by tutku            ###   ########.fr       */
+/*   Updated: 2025/10/21 14:22:46 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,27 @@ int key_hook(int keycode, t_game *game)
 	return (SUCCESS);
 }
 
+int	init_hooks(t_game *game)
+{
+	mlx_key_hook(game->gfx.win, key_hook, game);
+	mlx_hook(game->gfx.win, 17, 0, pressed_esc, game);
+	mlx_loop(game->gfx.mlx);
+	return (SUCCESS);
+}
+
 int	init_game(t_game *game)
 {
 	if (init_player_pos(game) != SUCCESS)
 		return (ERROR);
 	if (init_mlx(game) != SUCCESS)
 		return (ERROR);
-	if (load_xpm_files(game) != SUCCESS)
-		return (ft_free_mlx(game, ERROR));
 	color_ceiling(game);
 	color_floor(game);
 	mlx_put_image_to_window(game->gfx.mlx, game->gfx.win, game->gfx.image.img, 0, 0);
-	mlx_key_hook(game->gfx.win, key_hook, game);
-	mlx_hook(game->gfx.win, 17, 0, pressed_esc, game);
-	mlx_loop(game->gfx.mlx);
+	if (init_hooks(game) != SUCCESS)
+		return (ft_free_mlx(game, ERROR));
 	return (SUCCESS);
 }
+
+
+//test // mlx_put_image_to_window(game->gfx.mlx, game->gfx.win, game->gfx.wall[NORTH].img, 0, 0); //test

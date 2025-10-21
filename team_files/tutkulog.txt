@@ -11,13 +11,15 @@
 	*finished loading textures with mlx_xpm_file_to_image
 	*handled possible leaks on exit or error
 	
+21 OCTOBER
+	*
 
 
 Things to do:
-	* create one image (mlx_new_image) -> reuse it in everyframe, only redraw pixels in that buffer then mlx_put_image_to_window
+	* draw walls with dda raycaster
 	* implement W A S D and arrow keys, ESC (done)/ close(done)
+	* create one image (mlx_new_image) -> reuse it in everyframe, only redraw pixels in that buffer then mlx_put_image_to_window
 	* set up player speed
-	* add free in every exit path
 	
 
 

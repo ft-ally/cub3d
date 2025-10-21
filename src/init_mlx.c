@@ -6,19 +6,15 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 17:47:42 by tutku             #+#    #+#             */
-/*   Updated: 2025/10/20 20:06:57 by tutku            ###   ########.fr       */
+/*   Updated: 2025/10/21 14:23:27 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-/// Address of pixel(x, y) = Start of image
-/// + (bytes to skip whole rows) (Jump down y rows)
-/// + (bytes to skip pixels in the row)(Move right x pixels in that row)
-
 /// 1.load the image and capture its width/height
 /// 2.get pixel buffer info
-int	load_xpm_files(t_game *game)
+static int	load_xpm_files(t_game *game)
 {
 	int	i;
 
@@ -56,5 +52,7 @@ int	init_mlx(t_game *game)
 		&game->gfx.image.bpp,
 		&game->gfx.image.line_len,
 		&game->gfx.image.endian);
+	if (load_xpm_files(game) != SUCCESS)
+		return (ft_free_mlx(game, ERROR));
 	return (SUCCESS);
 }
