@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 17:47:42 by tutku             #+#    #+#             */
-/*   Updated: 2025/10/21 14:23:27 by tutku            ###   ########.fr       */
+/*   Updated: 2025/10/21 14:44:55 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int	init_mlx(t_game *game)
 	game->gfx.win = mlx_new_window(game->gfx.mlx, WIDTH, HEIGHT, "Cub3D"); //fix later
 	if (!game->gfx.win)
 		return (ft_free_mlx(game, WIN_FAIL));
-	// load_xpm_files(game);
 	game->gfx.image.img = mlx_new_image(game->gfx.mlx, WIDTH, HEIGHT);
 	game->gfx.image.addr = mlx_get_data_addr(
 		game->gfx.image.img,

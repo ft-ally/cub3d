@@ -12,18 +12,26 @@
 	*handled possible leaks on exit or error
 	
 21 OCTOBER
-	*
+	*implemented camerax, ray_x/y, cur_map_x/y
+		*camera_x → horizontal position of the ray on the screen, from -1 (left) to +1 (right).
+		*ray_x / ray_y → direction of the current ray in world space.
+		*cur_map_x / cur_map_y → the map cell coordinates (tile indices) the player’s ray is currently inside.
+	*calculated how far the ray travels to cross one gridline (delta_dist_x/y)
+	*found first gridline distances (side_x/y) and which way to step (step_x/y)
+	*finished the DDA loop that moves ray cell by cell until it hits a wall '1'
+	*recorded which side of the wall was hit (side_hit) for distance
+
+22 OCTOBER
 
 
 Things to do:
-	* draw walls with dda raycaster
+	https://hackmd.io/@nszl/H1LXByIE2#Camera-plane-vector
+	* After the DDA is done, calculate the distance of the ray to the wall,
+		to calculate how high the wall has to be drawn after this.
 	* implement W A S D and arrow keys, ESC (done)/ close(done)
 	* create one image (mlx_new_image) -> reuse it in everyframe, only redraw pixels in that buffer then mlx_put_image_to_window
 	* set up player speed
 	
-
-
-
 
 
 -Per-frame loop (mlx_loop_hook) + time delta.

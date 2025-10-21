@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:15:25 by tcakir-y          #+#    #+#             */
-/*   Updated: 2025/10/21 14:22:46 by tutku            ###   ########.fr       */
+/*   Updated: 2025/10/21 20:00:20 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,27 @@ int key_hook(int keycode, t_game *game)
 	return (SUCCESS);
 }
 
+/// 1. draw ceiling+floor
+/// 2. run DDA for each x column to draw walls
+int	render_frame(void *param)
+{
+	t_game	*game;
+
+	game = (t_game *)param;
+	color_ceiling(game);
+	color_floor(game);
+	if (init_dda(game) != SUCCESS);
+		return (ERROR); //free shit 
+	mlx_put_image_to_window(game->gfx.mlx, game->gfx.win,
+		game->gfx.image.img, 0, 0);
+	return (SUCCESS);
+}
+
 int	init_hooks(t_game *game)
 {
 	mlx_key_hook(game->gfx.win, key_hook, game);
 	mlx_hook(game->gfx.win, 17, 0, pressed_esc, game);
-	mlx_loop(game->gfx.mlx);
+	mlx_loop_hook(game->gfx.mlx, render_frame, game);
 	return (SUCCESS);
 }
 
@@ -43,11 +59,9 @@ int	init_game(t_game *game)
 		return (ERROR);
 	if (init_mlx(game) != SUCCESS)
 		return (ERROR);
-	color_ceiling(game);
-	color_floor(game);
-	mlx_put_image_to_window(game->gfx.mlx, game->gfx.win, game->gfx.image.img, 0, 0);
 	if (init_hooks(game) != SUCCESS)
 		return (ft_free_mlx(game, ERROR));
+	mlx_loop(game->gfx.mlx);
 	return (SUCCESS);
 }
 
