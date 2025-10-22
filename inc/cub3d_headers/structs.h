@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 13:29:47 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/21 19:58:49 by tutku            ###   ########.fr       */
+/*   Updated: 2025/10/22 19:10:43 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 
 #include "cub3d.h"
 
-typedef struct s_img_data t_img_data;
+typedef struct s_img t_img;
 typedef struct s_gfx t_gfx;
-typedef struct s_colors t_colors;
-typedef struct s_textures t_textures;
 typedef struct s_map t_map;
+typedef struct s_ray t_ray;
+typedef struct s_player t_player;
 typedef struct s_game t_game;
 
 typedef struct s_img
@@ -64,11 +64,8 @@ typedef struct s_ray
 	int		side_x;//dist. from player's cur position to first horiz. gridline
 	int		side_y;//dist. from player's cur position to first vert. gridline
 	int		side_hit;
+	double	wall_dist;//calculated distance to wall
 } t_ray;
-/* add later
-perp_dist → corrected distance to wall
-*/
-
 
 typedef struct s_player
 {
@@ -82,18 +79,27 @@ typedef struct s_player
 
 typedef struct s_game
 {
+	t_map		*map;
+	t_player	player;
+	t_ray		r;
+	t_gfx		gfx;
 	char		direction;
+	char		*textures[4];
 	int			dir_x;
 	int			dir_y;
-	char		*textures[4];
-	t_map		*map;
-	t_gfx		gfx;
-	t_player	player;
 	int			ceiling_rgb;
 	int			floor_rgb;
-	t_ray		r;
 	int			is_hit_wall;
 } t_game;
 
-#endif
+//typedef struct	s_line
+//{
+//	int	x; //the x coordinate of line relative to screen
+//	int	y; //the current pixel index of the line (along y axis)
+//	int	y0; //y start index of drawing texture
+//	int	y1; //y end index of drawing texture
+//	int	tex_x; //x coordinate of texture to draw
+//	int	tex_y; //y coordinate of texture to draw
+//} t_line;
 
+#endif

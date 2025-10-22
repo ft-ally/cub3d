@@ -6,7 +6,7 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:12:39 by tcakir-y          #+#    #+#             */
-/*   Updated: 2025/10/22 16:51:54 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2025/10/22 17:43:16 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	color_floor(t_game *game);
 void	color_ceiling(t_game *game);
 
 /*=========|init_dda.c|========*/
-int		init_dda(t_game *game);
+int		init_dda(t_game *g);
 
 /*=========|init_game.c|========*/
 int		init_game(t_game *game);

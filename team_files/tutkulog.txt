@@ -22,17 +22,21 @@
 	*recorded which side of the wall was hit (side_hit) for distance
 
 22 OCTOBER
+	*calculated ray's distance to the wall
 
+
+
+	*calculated how high the wall has to be drawn
 
 Things to do:
 	https://hackmd.io/@nszl/H1LXByIE2#Camera-plane-vector
-	* After the DDA is done, calculate the distance of the ray to the wall,
-		to calculate how high the wall has to be drawn after this.
 	* implement W A S D and arrow keys, ESC (done)/ close(done)
 	* create one image (mlx_new_image) -> reuse it in everyframe, only redraw pixels in that buffer then mlx_put_image_to_window
 	* set up player speed
 	
-
+Resources:
+check how to cover the entire FOV evenly: https://devabdilah.medium.com/3d-ray-casting-game-with-cub3d-7a116376056a
+for dda formulas: https://hackmd.io/@nszl/H1LXByIE2
 
 -Per-frame loop (mlx_loop_hook) + time delta.
 -Raycast DDA with flat shaded walls (no textures).
