@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_dda.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 14:53:00 by tutku             #+#    #+#             */
-/*   Updated: 2025/10/21 19:48:40 by tutku            ###   ########.fr       */
+/*   Updated: 2025/10/22 16:51:11 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_ray(t_game *g, int x)
+static void	init_ray(t_game *g, int x)
 {
 	g->r.camera_x = ((2.0 * x) / (double)WIDTH) - 1;
 	g->r.ray_x = g->player.dir_x + (g->player.plane_x * g->r.camera_x);
@@ -21,7 +21,7 @@ void	init_ray(t_game *g, int x)
 	g->r.cur_map_y = (int)g->player.y;
 }
 
-void	get_dist_to_next_grid(t_game *g)
+static void	get_dist_to_next_grid(t_game *g)
 {
 	if (g->r.ray_x == 0)
 		g->r.delta_dist_x = 1e30;
@@ -36,7 +36,7 @@ void	get_dist_to_next_grid(t_game *g)
 ///step_x(left/right) step_y(up/down) holds-> which side we're moving
 //if step_y == -1 (going up, smaller y)
 ///side_x side_y-> dist from cur_pos to first hor. or vert. grid ray will hits
-void	set_moving_direction(t_game *g)
+static void	set_moving_direction(t_game *g)
 {
 	if (g->r.ray_x < 0)
 	{
@@ -64,7 +64,7 @@ void	set_moving_direction(t_game *g)
 //jump to next map square, either in x-direction, or in y-direction
 //side_hit = 0-> hit a vertical wall (crossed x gridline)
 //side_hit = 1-> hit a horizontal wall (crossed y gridline)
-void	start_dda(t_game *g)
+static void	start_dda(t_game *g)
 {
 	g->is_hit_wall = 0;
 	while (g->is_hit_wall != 1)

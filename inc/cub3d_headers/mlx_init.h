@@ -6,7 +6,7 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:12:39 by tcakir-y          #+#    #+#             */
-/*   Updated: 2025/10/22 15:42:22 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2025/10/22 16:51:54 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,25 @@
 void	color_floor(t_game *game);
 void	color_ceiling(t_game *game);
 
+/*=========|init_dda.c|========*/
+int		init_dda(t_game *game);
+
 /*=========|init_game.c|========*/
-int	init_game(t_game *game);
+int		init_game(t_game *game);
 
 /*=========|init_mlx.c|========*/
-int	init_mlx(t_game *game);
+int		init_mlx(t_game *game);
 
 /*=========|init_test.c|========*/
-int setup_map_writable(t_game *game);
-int init_test(t_game *game);
-void free_map(t_map *m);
+int		setup_map_writable(t_game *game);
+int		init_test(t_game *game);
+void	free_map(t_map *m);
 
 /*=========|init_player.c|========*/ //move to cub3d.h
-int	init_player_pos(t_game *game);
+int		init_player_pos(t_game *game);
 
 /*=========|free.c|========*/
-int	free_loaded_textures(t_game *game, int range, int status);
-int	ft_free_mlx(t_game *game, int error_type);
+int		free_loaded_textures(t_game *game, int range, int status);
+int		ft_free_mlx(t_game *game, int error_type);
 
 #endif

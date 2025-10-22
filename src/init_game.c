@@ -6,7 +6,7 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:15:25 by tcakir-y          #+#    #+#             */
-/*   Updated: 2025/10/22 16:49:26 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2025/10/22 16:52:45 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	render_frame(void *param)
 	game = (t_game *)param;
 	color_ceiling(game);
 	color_floor(game);
-	if (init_dda(game) != SUCCESS);
+	if (init_dda(game) != SUCCESS)
 		return (ERROR); //TODO: add free
 	mlx_put_image_to_window(game->gfx.mlx, game->gfx.win,
 		game->gfx.image.img, 0, 0);
