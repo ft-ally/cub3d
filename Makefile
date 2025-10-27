@@ -36,6 +36,9 @@ SRC_FILES = main.c\
 			init_mlx.c\
 			init_player.c\
 			free.c \
+			render_wall_textures.c\
+			utils_dda.c\
+			utils_render_wall_textures.c\
 			init_test.c #test
 
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))

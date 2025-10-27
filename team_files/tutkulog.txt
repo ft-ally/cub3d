@@ -23,10 +23,11 @@
 
 22 OCTOBER
 	*calculated ray's distance to the wall
-
-
-
 	*calculated how high the wall has to be drawn
+
+25 OCTOBER
+	*added function to flip the wall image if ray hits to WEST or SOUTH texture
+	*added the function to start rendering the walls
 
 Things to do:
 	https://hackmd.io/@nszl/H1LXByIE2#Camera-plane-vector

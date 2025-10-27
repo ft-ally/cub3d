@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 13:29:47 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/22 19:10:43 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2025/10/27 17:59:25 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_map t_map;
 typedef struct s_ray t_ray;
 typedef struct s_player t_player;
 typedef struct s_game t_game;
+typedef struct s_line t_line;
 
 typedef struct s_img
 {
@@ -47,7 +48,6 @@ typedef struct s_map
 	char	**map_grid;
 	int		width;
 	int		height;
-	
 } t_map;
 
 typedef struct s_ray
@@ -63,8 +63,8 @@ typedef struct s_ray
 	int		step_y;//tells if we move up/down
 	int		side_x;//dist. from player's cur position to first horiz. gridline
 	int		side_y;//dist. from player's cur position to first vert. gridline
-	int		side_hit;
-	double	wall_dist;//calculated distance to wall
+	int		side_hit;//side of the wall we hit N,S,E,W
+	double	wall_dist;//calculated perpendicular distance to wall
 } t_ray;
 
 typedef struct s_player
@@ -77,12 +77,27 @@ typedef struct s_player
 	double	plane_y;//a vector perpendicular to dir
 } t_player;
 
+typedef struct	s_line
+{
+	int	line_height;//how tall the wall’s height will look on screen
+	int	top_row;    //lowest pixel to fill in current stripe y0
+	int	bottom_row; //highest pixel to fill in current stripe y1
+} t_line;
+
+typedef struct s_render
+{
+	int		is_vertical_wall;
+	double	ray_hit_pos;
+} t_render;
+
 typedef struct s_game
 {
 	t_map		*map;
 	t_player	player;
 	t_ray		r;
 	t_gfx		gfx;
+	t_line		l; //has values for drawing walls to screen
+	t_render	render;
 	char		direction;
 	char		*textures[4];
 	int			dir_x;
@@ -91,15 +106,5 @@ typedef struct s_game
 	int			floor_rgb;
 	int			is_hit_wall;
 } t_game;
-
-//typedef struct	s_line
-//{
-//	int	x; //the x coordinate of line relative to screen
-//	int	y; //the current pixel index of the line (along y axis)
-//	int	y0; //y start index of drawing texture
-//	int	y1; //y end index of drawing texture
-//	int	tex_x; //x coordinate of texture to draw
-//	int	tex_y; //y coordinate of texture to draw
-//} t_line;
 
 #endif
