@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:24:29 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/21 18:40:05 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/29 12:48:14 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int	parse_file(t_game *game, char *file);
 
 /*=========|v_map_utils.c|========*/
 void	set_spawn(t_game *game, char **map, int i, int j);
-char	**dup_map(t_game *game);
 int		check_top_bottom(char **map, int height);
 int		check_first_last(char **map, int width);
 

@@ -6,13 +6,13 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 17:06:50 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/29 12:40:35 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/29 14:21:28 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	check_invalid_char(char **map, t_game *game)
+static int	check_invalid_char(char **map, t_game *game)
 {
 	int	i;
 	int	j;
@@ -25,7 +25,7 @@ int	check_invalid_char(char **map, t_game *game)
 		j = -1;
 		while (map[i][++j])
 		{
-			if (!(ft_strchr("01NSEW ", map[i][j])))
+			if (!(ft_strchr("01NSEWD ", map[i][j])))
 				return (print_error("Invalid character in map"));
 			if ((ft_strchr("NSEW", map[i][j])))
 			{
@@ -41,7 +41,7 @@ int	check_invalid_char(char **map, t_game *game)
 	return (SUCCESS);
 }
 
-int	check_valid_space(char **map, int width, int height)
+static int	check_valid_floor(char **map, int width, int height)
 {
 	int i;
 	int j;
@@ -67,18 +67,18 @@ int	check_valid_space(char **map, int width, int height)
 	return (SUCCESS);
 }
 
-int	validate_walls(char **map, int width, int height)
+static int	validate_walls(char **map, int width, int height)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	if (check_top_bottom(map, height - 1) == ERROR)
+	if (check_top_bottom(map, height) == ERROR)
 		return (ERROR);
-	if (check_first_last(map, width - 1) == ERROR)
+	if (check_first_last(map, width) == ERROR)
 		return (ERROR);
-	if (check_valid_space(map, width, height) == ERROR)
+	if (check_valid_floor(map, width, height) == ERROR)
 		return (ERROR);
 	return (SUCCESS);
 }

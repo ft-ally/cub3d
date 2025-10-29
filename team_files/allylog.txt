@@ -28,16 +28,17 @@
 -Map: check top_bottom, check first_last
 -Map: dup map, flood fill
 
+29okt:
+-Reverted to previous commit, added the check for the isvalid spaces
+-Added 'D'; in check invalid char
 
 
-to do
-//When there is an invalid char on the map, it errors
-//When the map is not in order, it says missing identifier
 
-//invalid character check on 2d array
-
-//Check for the spaces and walls
-//Check for walkable path (flood fill)
+Notes:
+-Check invalid char also checks for D - doors in case of bonus
 
 
-done
+
+How to calculate the distance from the wall? is it X diagonal or xup and y left?
+
+
