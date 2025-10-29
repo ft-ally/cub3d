@@ -9,11 +9,36 @@
 +Added validate_rgb->checks if rgbstring is numeric and not ","
 +Added free functions: free_array, free_all, free_textures
 
-to do
-Double check the path, it takes everything until '\0' -> what if there's a space and more string?? 
-//Protect ft strdup mallocs game assets are initially malloc'd ->free it 
-//Save the FC RGB in struct
-//Error check the FC RGB
-//Check for the spaces and walls
-//Check for walkable path (flood fill)
-//Save map only to the struct
+16okt
+-Error protected rgb string (against invalid char, <0 && >255)
+-Added random textures for path
+-Added check for new lines after rgb
+-Added count rows for map
+-Added close and open file again
+-Added skip to map
+-Added copy 2d map to 2d array
+
+21okt
+-refactor
+	-get identifier to be in a while loop
+	-take rgb string into an int
+	-use wall array for loading map
+-Map: check invalid character, check multiple spawns
+-Map: store spawn dir
+-Map: check top_bottom, check first_last
+-Map: dup map, flood fill
+
+29okt:
+-Reverted to previous commit, added the check for the isvalid spaces
+-Added 'D'; in check invalid char
+
+
+
+Notes:
+-Check invalid char also checks for D - doors in case of bonus
+
+
+
+How to calculate the distance from the wall? is it X diagonal or xup and y left?
+
+
