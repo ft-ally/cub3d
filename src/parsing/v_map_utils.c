@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 18:34:07 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/29 12:33:34 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/29 18:52:09 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	check_top_bottom(char **map, int height)
 		j++;
 	}
 	j = 0;
-	while (map[height][j])
+	while (map[height - 1][j])
 	{
-		if (map[height][j] != '1' && map[height][j] != ' ')
+		if (map[height - 1][j] != '1' && map[height - 1][j] != ' ')
 			return (print_error("Map bottom not closed"));
 		j++;
 	}
