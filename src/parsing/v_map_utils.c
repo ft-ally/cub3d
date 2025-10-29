@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 18:34:07 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/29 12:33:34 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/29 15:50:27 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	check_first_last(char **map, int width)
 void	set_spawn(t_game *game, char **map, int i, int j)
 {
 	game->direction = map[i][j];
-	game->dir_x = j;
-	game->dir_y = i;
+	game->player.x = j;
+	game->player.y = i;
 }
 

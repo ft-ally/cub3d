@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:24:29 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/29 15:03:43 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/29 15:43:14 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@
 
 # define SUCCESS 0
 # define ERROR 1
+
+
+# define FORWARD 119
+# define BACK 115
+# define LEFT 97
+# define RIGHT 100
+# define ARROW_LEFT 97
+# define ARROW_RIGHT 100
 
 /*========|init_program.c|=======*/
 int		init_program(t_game *game, int argc, char **argv);
