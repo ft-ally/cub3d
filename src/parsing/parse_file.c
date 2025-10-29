@@ -6,12 +6,11 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 13:24:17 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/21 18:41:19 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/29 12:07:11 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 
 
 int	parse_file(t_game *game, char *file)

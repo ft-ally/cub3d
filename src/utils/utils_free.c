@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:21:51 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/21 14:53:14 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/29 12:10:39 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	free_textures(t_game *g)
 	i = 0;
 	while (i < 4)
 	{
-		if (g->gfx.wall[i].addr)
-			free(g->gfx.wall[i].addr);
+		if (g->textures[i])
+			free(g->textures[i]);
 		i++;
 	}
 }

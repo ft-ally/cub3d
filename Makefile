@@ -36,6 +36,7 @@ SRC_FILES = main.c\
 			parsing/get_utils.c\
 			parsing/parse_file.c\
 			parsing/validate_map.c\
+			parsing/v_map_utils.c\
 			utils/utils_error.c\
 			utils/utils_free.c \
 			utils/utils_string.c \

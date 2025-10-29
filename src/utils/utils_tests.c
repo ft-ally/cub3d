@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 14:13:25 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/21 15:46:16 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/29 12:11:03 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ void	print_extracted_data(t_game *game)
 	printf("====================\n");
 	printf("Texture paths\n");
 	printf("====================\n");
-	printf("North: %s\n", game->gfx.wall[0].addr);
-	printf("South: %s\n", game->gfx.wall[1].addr);
-	printf("East: %s\n", game->gfx.wall[2].addr);
-	printf("West: %s\n", game->gfx.wall[3].addr);
+	printf("North: %s\n", game->textures[0]);
+	printf("South: %s\n", game->textures[1]);
+	printf("East: %s\n", game->textures[2]);
+	printf("West: %s\n", game->textures[3]);
 	
 	printf("====================\n");
 	printf("Colors\n");

@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:21:51 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/21 14:50:01 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/29 12:09:32 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	init_structs(t_game *game)
 	ft_bzero(game->map, sizeof(t_map));
 	while (i < 4)
 	{
-		game->gfx.wall[i].addr = NULL;
+		game->textures[i] = NULL;
 		i++;
 	}
 	return (SUCCESS);

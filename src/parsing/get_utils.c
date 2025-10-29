@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 17:01:53 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/21 18:28:59 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/29 12:10:24 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	all_id_found(t_game *game)
 		return (0);
 	while (i < 4)
 	{
-		if (game->gfx.wall[i].addr == NULL)
+		if (game->textures[i] == NULL)
 			return (0);
 		i++;
 	}

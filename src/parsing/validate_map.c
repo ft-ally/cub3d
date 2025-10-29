@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 17:06:50 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/21 18:50:13 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/10/29 12:40:35 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,28 +41,30 @@ int	check_invalid_char(char **map, t_game *game)
 	return (SUCCESS);
 }
 
-
-void flood_fill( char **map, int x, int y, int width, int height)
+int	check_valid_space(char **map, int width, int height)
 {
-	if (x < 0 || y < 0 || x >= width || y >= height)
-		return ;
-	if (map[x][y] == '1' || map[x][y] == 'V')
-		return ;
-	map[x][y] = 'P';
-	flood_fill(map, x + 1, y, width, height);
-	flood_fill(map, x - 1, y, width, height);
-	flood_fill(map, x, y + 1, width, height);
-	flood_fill(map, x, y - 1, width, height);
-}
+	int i;
+	int j;
 
-int	validate_walkable(t_game *g)
-{
-	char	**map;
-	
-	map = dup_map(g);
-	if (!map)
-		return (ERROR);
-	flood_fill(map, g->spawn_x, g->spawn_y, g->map->width, g->map->height);
+	i = 0;
+	if (width <= 2 || height <= 2)
+		return (print_error("Map too small"));
+	while (i < height)
+	{
+		j = 0;
+		while (j < width)
+		{
+			if (map[i][j] != ' ' && map[i][j] != '1')
+			{
+				if (map[i + 1][j] == ' ' || map[i - 1][j] == ' '
+					|| map[i][j + 1] == ' ' || map[i][j - 1] == ' ')
+						return (print_error("Out of bounds!"));
+			}
+			j++;
+		}
+		i++;
+	}
+	return (SUCCESS);
 }
 
 int	validate_walls(char **map, int width, int height)
@@ -76,6 +78,8 @@ int	validate_walls(char **map, int width, int height)
 		return (ERROR);
 	if (check_first_last(map, width - 1) == ERROR)
 		return (ERROR);
+	if (check_valid_space(map, width, height) == ERROR)
+		return (ERROR);
 	return (SUCCESS);
 }
 
@@ -86,16 +90,8 @@ int	validate_map(t_game *game)
 	map = game->map->map_grid; //for easier passing
 	if (check_invalid_char(map, game) == ERROR)
 		return (ERROR);
-	// if (validate_walls(map, game->width, game->height) == ERROR)
-	// 	return (ERROR);
-	// if (validate_walkable(map) == ERROR)
-	// 	return (ERROR);
-	//validate walls
-	//validate walkable path
+	if (validate_walls(map, game->map->width, game->map->height) == ERROR)
+		return (ERROR);
 	return (SUCCESS);
 }
 
-	//First character of every row has to be a 1
-	//The last character of every row except for space has to be a 1
-	//The top most row (map[0]) should only have 1s
-	//The bottom most row should only have 1s
