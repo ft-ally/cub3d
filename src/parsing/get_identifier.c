@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 19:06:26 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/29 12:34:51 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/11/04 14:35:37 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,13 +105,18 @@ static int	get_next_identifier(t_game *game, int fd, int i)
 
 int	get_identifier(t_game *game, int fd)
 {
-	int	i;
+	int		i;
+	char	*line;
 
 	i = 0;
 	while (!all_id_found(game))
 	{
 		if (get_next_identifier(game, fd, i) == ERROR)
+		{
+			while ((line = get_next_line(fd)))
+				free(line);
 			return (ERROR);
+		}
 	}
 	return (SUCCESS);
 }
