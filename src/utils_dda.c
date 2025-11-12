@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:06:41 by tutku             #+#    #+#             */
-/*   Updated: 2025/10/25 19:57:04 by tutku            ###   ########.fr       */
+/*   Updated: 2025/11/12 21:27:54 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ void	init_pixel_fill(t_game *g)
 	const int	center_line = HEIGHT / 2;
 
 	g->l.line_height = (int)(HEIGHT / g->r.wall_dist);
+	if (g->l.line_height < 1)
+		g->l.line_height = 1;
 	g->l.top_row = center_line - (g->l.line_height / 2);
 	if (g->l.top_row < 0)
 		g->l.top_row = 0;
