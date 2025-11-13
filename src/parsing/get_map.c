@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 15:07:02 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/21 18:42:09 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/11/13 16:24:22 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,9 @@ int	copy_map_to_array(t_game *game, char *line, int fd)
 				return (print_error("Get next line fail"));
 		}
 		i++;
-    }
+	}
+	line = get_next_line(fd);
+	free(line);
 	return (SUCCESS);
 }
 

@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 18:34:07 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/29 15:50:27 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/11/13 16:30:18 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	check_top_bottom(char **map, int height)
 		j++;
 	}
 	j = 0;
-	while (map[height][j])
+	while (map[height - 1][j])
 	{
-		if (map[height][j] != '1' && map[height][j] != ' ')
+		if (map[height - 1][j] != '1' && map[height - 1][j] != ' ')
 			return (print_error("Map bottom not closed"));
 		j++;
 	}
@@ -51,7 +51,7 @@ int	check_first_last(char **map, int width)
 			return (print_error("Map left side not closed"));
 		while (last >= 0 && ft_isspace(map[i][last]))
 			last--;
-		if (map[i][last] != '1' && map[i][last] != ' ')
+		if (map[i][last] != '1' && map[i][last] != ' ' && map[i][last] != '\0')
 			return (print_error("Map right side not closed"));
 		i++;
 	}
