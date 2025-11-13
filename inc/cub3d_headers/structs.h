@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 13:29:47 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/29 15:04:16 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/11/13 15:41:56 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 # define STRUCTS_H
 
 #include "cub3d.h"
-
-# define NORTH 0
-# define SOUTH 1
-# define EAST  2
-# define WEST  3
 
 typedef struct s_img t_img;
 typedef struct s_gfx t_gfx;
@@ -66,8 +61,8 @@ typedef struct s_ray
 	double	delta_dist_y;
 	int		step_x;//tells if we move right/left
 	int		step_y;//tells if we move up/down
-	int		side_x;//dist. from player's cur position to first horiz. gridline
-	int		side_y;//dist. from player's cur position to first vert. gridline
+	double		side_x;//dist. from player's cur position to first horiz. gridline
+	double		side_y;//dist. from player's cur position to first vert. gridline
 	int		side_hit;//side of the wall we hit N,S,E,W
 	double	wall_dist;//calculated perpendicular distance to wall
 } t_ray;
@@ -110,6 +105,7 @@ typedef struct s_game
 	int			ceiling_rgb;
 	int			floor_rgb;
 	int			is_hit_wall;
+	double		step; //how much texture to move for each screen pixel
 } t_game;
 
 #endif

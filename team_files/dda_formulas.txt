@@ -1,0 +1,58 @@
+1. camera x (from left -1 to right +1)
+__what it is:
+		a normalized horizontal coordinate across your screen, 
+		from left (−1) to right (+1).
+__why we need it:
+		so that for each vertical column x of the screen, 
+		we know how far it is from the center of your field of view.
+__how we compute it:
+		cameraX = 2.0 * x / (double)WIDTH - 1.0;
+
+2. ray direction (from player dir + plane)
+		rayDirX = dirX + planeX * cameraX;
+		rayDirY = dirY + planeY * cameraX;
+
+3. current map cell (integer grid of your world)
+		mapX = (int)posX;   // player position in map units (floats)
+		mapY = (int)posY;
+
+4. length to next x/y gridline from a unit step in that axis (delta distances)
+__If the ray goes exactly vertical (ray_x == 0), 
+	then it will never cross a vertical grid line 
+	so the distance to cross one in the x-direction is infinite.
+	so we just put a very large number like 1e30 to mean “infinite”.
+		deltaDistX = (rayDirX == 0) ? 1e30 : fabs(1.0 / rayDirX);
+		deltaDistY = (rayDirY == 0) ? 1e30 : fabs(1.0 / rayDirY);
+
+5. step direction and initial side distances
+(which side of the current cell we hit first)
+		if (rayDirX < 0) { stepX = -1; sideDistX = (posX - mapX) * deltaDistX; }
+		else             { stepX =  1; sideDistX = (mapX + 1.0 - posX) * deltaDistX; }
+
+		if (rayDirY < 0) { stepY = -1; sideDistY = (posY - mapY) * deltaDistY; }
+		else             { stepY =  1; sideDistY = (mapY + 1.0 - posY) * deltaDistY; }
+
+6. DDA loop: walk the grid until you hit a wall
+		hit = 0;
+		while (!hit) {
+			if (sideDistX < sideDistY) { sideDistX += deltaDistX; mapX += stepX; side = 0; } // 0: hit a vertical side (E/W)
+			else                       { sideDistY += deltaDistY; mapY += stepY; side = 1; } // 1: hit a horizontal side (N/S)
+
+			if (worldMap[mapY][mapX] > 0) hit = 1; // your map cell is a wall if > 0
+		}
+
+
+7. perpendicular wall distance (kill fisheye!)
+		if (side == 0) perpWallDist = (mapX - posX + (1 - stepX) * 0.5) / rayDirX;
+		else           perpWallDist = (mapY - posY + (1 - stepY) * 0.5) / rayDirY;
+
+8. projected line height and vertical segment to draw
+		lineHeight = (int)(HEIGHT / perpWallDist);
+		drawStart = -lineHeight / 2 + HEIGHT / 2;
+		if (drawStart < 0) drawStart = 0;
+		drawEnd = lineHeight / 2 + HEIGHT / 2;
+		if (drawEnd >= HEIGHT) drawEnd = HEIGHT - 1;
+
+9. simple shading (optional): darken when side==1
+pick color by wall id or by side:
+		color = (side == 1) ? dim(color) : color;

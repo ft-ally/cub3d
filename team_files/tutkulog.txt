@@ -1,0 +1,47 @@
+17 OCTOBER
+	*added rgb bit shift formula for ceiling and floor
+	*added the function for ceiling and floor coloring
+	*added ESC key pressing functionality to exit the program
+
+19 OCTOBER
+	*added function to initialize player's direction vector and plane vector
+
+20 OCTOBER
+	*created tester init file
+	*finished loading textures with mlx_xpm_file_to_image
+	*handled possible leaks on exit or error
+	
+21 OCTOBER
+	*implemented camerax, ray_x/y, cur_map_x/y
+		*camera_x → horizontal position of the ray on the screen, from -1 (left) to +1 (right).
+		*ray_x / ray_y → direction of the current ray in world space.
+		*cur_map_x / cur_map_y → the map cell coordinates (tile indices) the player’s ray is currently inside.
+	*calculated how far the ray travels to cross one gridline (delta_dist_x/y)
+	*found first gridline distances (side_x/y) and which way to step (step_x/y)
+	*finished the DDA loop that moves ray cell by cell until it hits a wall '1'
+	*recorded which side of the wall was hit (side_hit) for distance
+
+22 OCTOBER
+	*calculated ray's distance to the wall
+	*calculated how high the wall has to be drawn
+
+25 OCTOBER
+	*added function to flip the wall image if ray hits to WEST or SOUTH texture
+	*added the function to start rendering the walls
+
+Things to do:
+	https://hackmd.io/@nszl/H1LXByIE2#Camera-plane-vector
+	* implement W A S D and arrow keys, ESC (done)/ close(done)
+	* create one image (mlx_new_image) -> reuse it in everyframe, only redraw pixels in that buffer then mlx_put_image_to_window
+	* set up player speed
+	
+Resources:
+check how to cover the entire FOV evenly: https://devabdilah.medium.com/3d-ray-casting-game-with-cub3d-7a116376056a
+for dda formulas: https://hackmd.io/@nszl/H1LXByIE2
+
+-Per-frame loop (mlx_loop_hook) + time delta.
+-Raycast DDA with flat shaded walls (no textures).
+-Collision detection (axis-separated) + smooth movement/rotation.
+-Load NO/SO/WE/EA textures; textured wall mapping + simple side shading.
+-(Bonus) Minimap overlay, FPS counter, mouse look (Linux MLX: mlx_mouse_hide, mlx_hook for motion).
+-Robust freeing/error paths.
