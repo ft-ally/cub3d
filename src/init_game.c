@@ -6,7 +6,7 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:15:25 by tcakir-y          #+#    #+#             */
-/*   Updated: 2025/10/22 16:52:45 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2025/11/13 17:47:42 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ int key_hook(int keycode, t_game *game)
 {
 	if (keycode == KEY_ESC)
 	{
-		ft_free_mlx(game, ESC_PRESS); //TODO: add free for parsing
+		ft_free_mlx(game, ESC_PRESS);
+		free_all(game);
 		exit(0);
 	}
+	init_movements(keycode, game);
 	return (SUCCESS);
 }
 
@@ -65,5 +67,3 @@ int	init_game(t_game *game)
 	return (SUCCESS);
 }
 
-
-//test // mlx_put_image_to_window(game->gfx.mlx, game->gfx.win, game->gfx.wall[NORTH].img, 0, 0); //test

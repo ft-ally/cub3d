@@ -6,7 +6,7 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:12:39 by tcakir-y          #+#    #+#             */
-/*   Updated: 2025/11/13 16:00:29 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2025/11/13 17:30:52 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,6 @@
 # define WIN_FAIL 1
 # define ESC_PRESS 2
 
-# define UP	         119
-# define DOWN        115
-# define LEFT        97
-# define RIGHT       100
 # define KEY_ESC     65307
 
 /*=========|init_background.c|========*/
@@ -55,6 +51,9 @@ void	free_map(t_map *m);
 
 /*=========|init_player.c|========*/ //move to cub3d.h
 int		init_player_pos(t_game *game);
+
+/*=========|init_movements.c|========*/ 
+void	init_movements(int keycode, t_game *game);
 
 /*=========|render_wall_textures.c|========*/
 void	render_textured_column(t_game *g, int x);

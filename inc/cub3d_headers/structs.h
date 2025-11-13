@@ -6,7 +6,7 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 13:29:47 by aalombro          #+#    #+#             */
-/*   Updated: 2025/11/13 15:41:56 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2025/11/13 16:46:10 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,8 @@ typedef struct s_game
 	int			is_hit_wall;
 	double		step; //how much texture to move for each screen pixel
 } t_game;
+
+//mapX -> g->r.cur_map_x
+//posX -> player->x
 
 #endif

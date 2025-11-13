@@ -6,7 +6,7 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:24:29 by aalombro          #+#    #+#             */
-/*   Updated: 2025/11/13 15:41:02 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2025/11/13 17:32:13 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,14 @@
 # define ERROR 1
 
 
-# define FORWARD 119
-# define BACK 115
-# define LEFT 97
-# define RIGHT 100
-# define ARROW_LEFT 97
-# define ARROW_RIGHT 100
+# define KEY_W 119
+# define KEY_S 115
+# define KEY_A 97
+# define KEY_D 100
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
+# define MOVE_SPEED 0.5
+# define ROT_SPEED 0.1
 
 /*========|init_program.c|=======*/
 int		init_program(t_game *game, int argc, char **argv);

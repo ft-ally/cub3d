@@ -46,6 +46,7 @@ SRC_FILES = main.c\
 			init_game.c \
 			init_mlx.c\
 			init_player.c\
+			init_movements.c\
 			render_wall_textures.c\
 			utils_dda.c\
 			utils_render_wall_textures.c\
