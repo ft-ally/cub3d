@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_dda.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:06:41 by tutku             #+#    #+#             */
-/*   Updated: 2025/11/12 21:27:54 by tutku            ###   ########.fr       */
+/*   Updated: 2025/11/13 14:42:46 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ void	set_side_hit(t_game *g)
 {
 	if (g->r.side_hit == E_OR_W)
 	{
-		g->r.wall_dist = g->r.side_x - g->r.delta_dist_x;
+		g->r.wall_dist = (g->r.cur_map_x - g->player.x
+				+ (1 - g->r.step_x) / 2.0) / g->r.ray_x;
 		if (g->r.ray_x > 0)
 			g->r.side_hit = EAST;
 		else
@@ -90,12 +91,15 @@ void	set_side_hit(t_game *g)
 	}
 	else
 	{
-		g->r.wall_dist = g->r.side_y - g->r.delta_dist_y;
+		g->r.wall_dist = (g->r.cur_map_y - g->player.y
+				+ (1 - g->r.step_y) / 2.0) / g->r.ray_y;
 		if (g->r.ray_y > 0)
 			g->r.side_hit = SOUTH;
 		else
 			g->r.side_hit = NORTH;
 	}
+	if (g->r.wall_dist <= 0.0001)
+		g->r.wall_dist = 0.0001;
 }
 
 /// Line height and on-screen span(top & bottom pixel row)
@@ -104,8 +108,8 @@ void	init_pixel_fill(t_game *g)
 	const int	center_line = HEIGHT / 2;
 
 	g->l.line_height = (int)(HEIGHT / g->r.wall_dist);
-	if (g->l.line_height < 1)
-		g->l.line_height = 1;
+	if (g->l.line_height < 0)
+		g->l.line_height = 0;
 	g->l.top_row = center_line - (g->l.line_height / 2);
 	if (g->l.top_row < 0)
 		g->l.top_row = 0;
