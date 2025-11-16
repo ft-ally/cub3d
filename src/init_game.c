@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:15:25 by tcakir-y          #+#    #+#             */
-/*   Updated: 2025/11/13 17:47:42 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2025/11/16 13:50:53 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	pressed_esc(t_game *game)
 	exit(0);
 }
 
-int key_hook(int keycode, t_game *game)
+int	key_hook(int keycode, t_game *game)
 {
 	if (keycode == KEY_ESC)
 	{
@@ -66,4 +66,3 @@ int	init_game(t_game *game)
 	mlx_loop(game->gfx.mlx);
 	return (SUCCESS);
 }
-

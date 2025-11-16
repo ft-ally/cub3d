@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 14:53:00 by tutku             #+#    #+#             */
-/*   Updated: 2025/10/25 19:57:15 by tutku            ###   ########.fr       */
+/*   Updated: 2025/11/16 13:51:07 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	init_dda(t_game *g)
 
 	x = -1;
 	while (++x < WIDTH)
-	{	
+	{
 		init_ray(g, x);
 		get_dist_to_next_grid(g);
 		set_moving_direction(g);

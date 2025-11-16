@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 20:09:56 by tutku             #+#    #+#             */
-/*   Updated: 2025/10/25 21:06:48 by tutku            ###   ########.fr       */
+/*   Updated: 2025/11/16 13:40:52 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //vertical wall->Wall aligned along the Y-axis (standing North–South)
 //flip if you hit west or sout side of the wall
 //if tex_col==0(leftmost) -> flipped==9(rightmost)
-int		flip_texture(t_img	*texture, t_game *g)
+int	flip_texture(t_img	*texture, t_game *g)
 {
 	const int	is_west_side = g->render.is_vertical_wall && g->r.ray_x > 0;
 	const int	is_south_side = !g->render.is_vertical_wall && g->r.ray_y < 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_dda.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:06:41 by tutku             #+#    #+#             */
-/*   Updated: 2025/11/13 14:42:46 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2025/11/16 13:41:16 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	get_dist_to_next_grid(t_game *g)
 	if (ray_x == 0)
 		g->r.delta_dist_x = 1e30;
 	else
-		g->r.delta_dist_x =  1 / fabs(ray_x);
+		g->r.delta_dist_x = 1 / fabs(ray_x);
 	if (ray_y == 0)
 		g->r.delta_dist_y = 1e30;
 	else

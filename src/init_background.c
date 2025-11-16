@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 01:24:19 by tutku             #+#    #+#             */
-/*   Updated: 2025/10/27 18:00:17 by tutku            ###   ########.fr       */
+/*   Updated: 2025/11/16 13:51:18 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	img_put_px(t_img *img, int x, int y, int color)
 {
 	char	*dest;
-	
+
 	dest = img->addr + (y * img->line_len + x * (img->bpp / 8));
 	*(int *)dest = color;
 }
