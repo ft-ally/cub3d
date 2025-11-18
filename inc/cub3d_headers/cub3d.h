@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:24:29 by aalombro          #+#    #+#             */
-/*   Updated: 2025/11/13 17:32:13 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2025/11/18 17:53:12 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 # define KEY_D 100
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
-# define MOVE_SPEED 0.5
-# define ROT_SPEED 0.1
+# define MOVE_SPEED 0.8
+# define ROT_SPEED 0.5
 
 /*========|init_program.c|=======*/
 int		init_program(t_game *game, int argc, char **argv);
@@ -53,6 +53,8 @@ int		get_wall_index(char *id);
 int		all_id_found(t_game *game);
 void	pad_line(int width, char *str);
 int		allocate_array(t_game *game);
+int		validate_path(char *path);
+
 
 /*=========|validate_map.c|========*/
 int	validate_map(t_game *game);

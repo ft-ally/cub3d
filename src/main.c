@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:23:58 by aalombro          #+#    #+#             */
-/*   Updated: 2025/11/16 13:41:43 by tutku            ###   ########.fr       */
+/*   Updated: 2025/11/18 17:25:59 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	main(int argc, char *argv[])
 
 	if (init_program(&game, argc, argv) != SUCCESS)
 		return (free_all(&game), ERROR);
+	// print_extracted_data(&game);
 	if (init_game(&game) != SUCCESS)
 		return (ft_free_mlx(&game, SUCCESS), free_all(&game), ERROR);
-	print_extracted_data(&game);
 	ft_free_mlx(&game, SUCCESS);
 	free_all(&game);
 }

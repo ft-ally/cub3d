@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 14:25:37 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/21 15:20:36 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/11/18 17:56:16 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	get_rgb(t_game *game, char *rgb_string, char *id)
 
 	i = 0;
 	if ((ft_strcmp(id, "F ") == 0 && game->floor_rgb != -1)
-	 || ((ft_strcmp(id, "C ") == 0) && game->ceiling_rgb != -1))
+		|| ((ft_strcmp(id, "C ") == 0) && game->ceiling_rgb != -1))
 		return (print_error("Error, duplicate RGB string found"));
 	if (validate_rgb_string(rgb_string) == ERROR)
 		return (ERROR);

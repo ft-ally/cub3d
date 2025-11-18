@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 17:06:50 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/29 14:21:28 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/11/18 17:58:24 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	check_invalid_char(char **map, t_game *game)
 		j = -1;
 		while (map[i][++j])
 		{
-			if (!(ft_strchr("01NSEWD ", map[i][j])))
+			if (!(ft_strchr("01NSEW ", map[i][j])))
 				return (print_error("Invalid character in map"));
 			if ((ft_strchr("NSEW", map[i][j])))
 			{
@@ -37,14 +37,14 @@ static int	check_invalid_char(char **map, t_game *game)
 	if (spawn_count <= 0)
 		return (print_error("No spawn location found"));
 	if (spawn_count > 1)
-	return (print_error("Multiple spawn locations found"));
+		return (print_error("Multiple spawn locations found"));
 	return (SUCCESS);
 }
 
 static int	check_valid_floor(char **map, int width, int height)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	if (width <= 2 || height <= 2)
@@ -58,7 +58,7 @@ static int	check_valid_floor(char **map, int width, int height)
 			{
 				if (map[i + 1][j] == ' ' || map[i - 1][j] == ' '
 					|| map[i][j + 1] == ' ' || map[i][j - 1] == ' ')
-						return (print_error("Out of bounds!"));
+					return (print_error("Out of bounds!"));
 			}
 			j++;
 		}
@@ -86,12 +86,11 @@ static int	validate_walls(char **map, int width, int height)
 int	validate_map(t_game *game)
 {
 	char	**map;
-	
-	map = game->map->map_grid; //for easier passing
+
+	map = game->map->map_grid;
 	if (check_invalid_char(map, game) == ERROR)
 		return (ERROR);
 	if (validate_walls(map, game->map->width, game->map->height) == ERROR)
 		return (ERROR);
 	return (SUCCESS);
 }
-

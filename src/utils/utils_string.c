@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 14:32:51 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/16 19:04:53 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/11/18 17:58:52 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ char	*ft_strcpy(char *dest, char *src)
 	dest[i] = '\0';
 	return (dest);
 }
+
 long	ft_atol(char *str)
 {
 	long	result;

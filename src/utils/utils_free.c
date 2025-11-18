@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_free.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:21:51 by aalombro          #+#    #+#             */
-/*   Updated: 2025/11/13 16:00:41 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2025/11/18 18:00:01 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ int	free_loaded_textures(t_game *game, int end, int status)
 
 int	ft_free_mlx(t_game *game, int error_type)
 {
-	free_map(game->map); //test
 	if (error_type == WIN_FAIL)
 	{
 		mlx_destroy_display(game->gfx.mlx);
@@ -76,7 +75,7 @@ int	ft_free_mlx(t_game *game, int error_type)
 			free(game->gfx.mlx);
 			game->gfx.mlx = NULL;
 		}
-		exit(0);
+		//exit(0);
 	}
 	return (SUCCESS);
 }
@@ -91,5 +90,7 @@ void	free_all(t_game *game)
 		free_array(game->map->map_grid);
 		free(game->map);
 	}
-		
 }
+
+//free_map(game->map); //test
+//i deleted the exit(0) because otherwise it doesny go back to function caller

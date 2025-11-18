@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 15:07:02 by aalombro          #+#    #+#             */
-/*   Updated: 2025/11/13 16:24:22 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/11/18 17:55:58 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int	check_new_lines(int fd)
 				break ;
 			}
 			if (line[i] != '0' && line[i] != ' '
-				&& line[i] != '1' && line[i] !='\t' )
-					return(free(line), print_error("Invalid map format!"));
+				&& line[i] != '1' && line[i] != '\t')
+				return (free(line), print_error("Invalid map format!"));
 			else if (line[i] == '1' || line[i] == '0')
 				return (free(line), SUCCESS);
 			i++;
@@ -47,7 +47,7 @@ int	count_rows_map(t_map *map, int fd)
 {
 	char	*line;
 	size_t	len;
-	
+
 	if (check_new_lines(fd) == ERROR)
 		return (ERROR);
 	map->height = 1;
@@ -72,7 +72,6 @@ int	skip_to_map(int fd, char **line)
 	int		i;
 	int		c;
 
-	i = 0;
 	c = 0;
 	while (1)
 	{
@@ -80,28 +79,20 @@ int	skip_to_map(int fd, char **line)
 		if (!*line)
 			return (print_error("Get next line error"));
 		i = 0;
-		while ((*line)[i])
+		if ((*line)[0] == 'C')
+			c = 1;
+		while (c == 1 && (*line)[i])
 		{
-			if (i == 0 && (*line)[i] == 'C')
+			if ((*line)[i] != ' ' && (*line)[i] != '\t')
 			{
-				c = 1;
-				break ;
-			}
-			if (c == 1)
-			{
-				if ((*line)[i] == ' ' || (*line)[i] == '\t')
-				{
-					i++;
-					continue ;
-				}
 				if ((*line)[i] == '1' || (*line)[i] == '0')
-					return(SUCCESS);
+					return (SUCCESS);
+				break ;
 			}
 			i++;
 		}
 		free(*line);
 	}
-	return (SUCCESS);
 }
 
 int	copy_map_to_array(t_game *game, char *line, int fd)

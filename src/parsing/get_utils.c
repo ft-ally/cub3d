@@ -6,11 +6,22 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 17:01:53 by aalombro          #+#    #+#             */
-/*   Updated: 2025/10/29 12:10:24 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/11/18 17:56:53 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	validate_path(char *path)
+{
+	int		fd;
+
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+		return (print_error("Texture path invalid"));
+	close(fd);
+	return (SUCCESS);
+}
 
 int	get_wall_index(char *id)
 {
@@ -48,7 +59,7 @@ void	pad_line(int width, char *str)
 
 	len = ft_strlen(str);
 	if (len > 0 && str[len - 1] == '\n')
- 	{
+	{
 		str[len - 1] = '\0';
 		len--;
 	}
