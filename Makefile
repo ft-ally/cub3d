@@ -19,7 +19,7 @@ PINK = \033[1;95m
 RESET = \033[0m
 
 CC = cc
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror
 
 INC = -I $(LIBFT) -I $(MLX) -I $(CUB3D_HEADERS)
 LIBFT = inc/libft
@@ -49,8 +49,8 @@ SRC_FILES = main.c\
 			init_movements.c\
 			render_wall_textures.c\
 			utils_dda.c\
-			utils_render_wall_textures.c\
-			init_test.c #test
+			utils_render_wall_textures.c
+#			init_test.c #test
 
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ = $(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))

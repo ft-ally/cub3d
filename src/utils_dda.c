@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_dda.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:06:41 by tutku             #+#    #+#             */
-/*   Updated: 2025/11/16 13:41:16 by tutku            ###   ########.fr       */
+/*   Updated: 2025/11/26 15:46:37 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,18 +85,18 @@ void	set_side_hit(t_game *g)
 		g->r.wall_dist = (g->r.cur_map_x - g->player.x
 				+ (1 - g->r.step_x) / 2.0) / g->r.ray_x;
 		if (g->r.ray_x > 0)
-			g->r.side_hit = EAST;
-		else
 			g->r.side_hit = WEST;
+		else
+			g->r.side_hit = EAST;
 	}
 	else
 	{
 		g->r.wall_dist = (g->r.cur_map_y - g->player.y
 				+ (1 - g->r.step_y) / 2.0) / g->r.ray_y;
 		if (g->r.ray_y > 0)
-			g->r.side_hit = SOUTH;
-		else
 			g->r.side_hit = NORTH;
+		else
+			g->r.side_hit = SOUTH;
 	}
 	if (g->r.wall_dist <= 0.0001)
 		g->r.wall_dist = 0.0001;

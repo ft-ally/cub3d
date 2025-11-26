@@ -6,7 +6,7 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 15:09:01 by tcakir-y          #+#    #+#             */
-/*   Updated: 2025/11/13 15:09:36 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2025/11/26 15:51:07 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	print_wall_column(t_game *g, int x, t_img *texture, double tex_pos)
 	y = g->l.top_row;
 	while (y < g->l.bottom_row)
 	{
-		tex_y = (int)tex_pos & (texture->h - 1);
+		tex_y = (int)tex_pos;
 		tex_pos += g->step;
 		src = texture->addr
 			+ (tex_y * texture->line_len

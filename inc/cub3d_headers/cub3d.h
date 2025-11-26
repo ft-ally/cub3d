@@ -3,26 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:24:29 by aalombro          #+#    #+#             */
-/*   Updated: 2025/11/18 17:53:12 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/11/26 15:55:33 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-#include "structs.h"
-#include "libft.h"
-#include "mlx.h"
-#include "mlx_init.h"
-#include <math.h>
+# include "structs.h"
+# include "libft.h"
+# include "mlx.h"
+# include "mlx_init.h"
+# include <math.h>
 
 # define SUCCESS 0
 # define ERROR 1
-
 
 # define KEY_W 119
 # define KEY_S 115
@@ -55,26 +53,23 @@ void	pad_line(int width, char *str);
 int		allocate_array(t_game *game);
 int		validate_path(char *path);
 
-
 /*=========|validate_map.c|========*/
-int	validate_map(t_game *game);
+int		validate_map(t_game *game);
 
 /*=========|parse_file.c|========*/
-int	parse_file(t_game *game, char *file);
+int		parse_file(t_game *game, char *file);
 
 /*=========|v_map_utils.c|========*/
 void	set_spawn(t_game *game, char **map, int i, int j);
 int		check_top_bottom(char **map, int height);
 int		check_first_last(char **map, int width);
 
-
-
 /*================|||UTILS|||==============*/
 
 /*=========|utils_free.c|========*/
-void free_textures(t_game *g);
-void free_array(char **array);
-void free_all(t_game *game);
+void	free_textures(t_game *g);
+void	free_array(char **array);
+void	free_all(t_game *game);
 
 /*=========|utils_error.c|========*/
 int		print_error(char *str);
@@ -86,4 +81,4 @@ char	*ft_strcpy(char *dest, char *src);
 /*========|utils_tests.c|========*/
 void	print_extracted_data(t_game *game);
 
-# endif
+#endif

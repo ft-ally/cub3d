@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_dda.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 14:53:00 by tutku             #+#    #+#             */
-/*   Updated: 2025/11/16 13:51:07 by tutku            ###   ########.fr       */
+/*   Updated: 2025/11/26 14:37:04 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	init_dda(t_game *g)
 		render_textured_column(g, x);
 	}
 	mlx_put_image_to_window(g->gfx.mlx, g->gfx.win, g->gfx.image.img, 0, 0);
-	return (SUCCESS); 
+	return (SUCCESS);
 }
 
 /*

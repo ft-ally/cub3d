@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:23:58 by aalombro          #+#    #+#             */
-/*   Updated: 2025/11/18 17:25:59 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/11/26 14:41:07 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,9 @@ int	main(int argc, char *argv[])
 
 	if (init_program(&game, argc, argv) != SUCCESS)
 		return (free_all(&game), ERROR);
-	// print_extracted_data(&game);
 	if (init_game(&game) != SUCCESS)
 		return (ft_free_mlx(&game, SUCCESS), free_all(&game), ERROR);
 	ft_free_mlx(&game, SUCCESS);
 	free_all(&game);
+	return (SUCCESS);
 }
-
-// int	main(void)
-// {
-// 	t_game	game;
-
-// 	ft_memset(&game, 0, sizeof(t_game));
-// 	if (setup_map_writable(&game) != SUCCESS) //test
-// 		return (ERROR);
-// 	if (init_test(&game) != SUCCESS) //test
-// 		return (ERROR);
-// 	if (init_game(&game) != SUCCESS)
-// 		return (free_map(game.map), ft_free_mlx(&game, SUCCESS), ERROR);
-// 	ft_free_mlx(&game, SUCCESS);
-// 	free_map(game.map);
-// 	return (SUCCESS);
-// }
