@@ -6,7 +6,7 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:12:39 by tcakir-y          #+#    #+#             */
-/*   Updated: 2025/11/26 14:44:54 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2025/11/27 15:09:02 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@
 
 # define KEY_ESC 65307
 
+/**=========|to add the submodule|========*/
+/*
+git submodule add https://github.com/42Paris/minilibx-linux.git inc/mlx_linux
+*/
 /*=========|init_background.c|========*/
 void	img_put_px(t_img *img, int x, int y, int color);
 void	color_floor(t_game *game);
